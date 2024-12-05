@@ -57,11 +57,11 @@ namespace Sixoclock.Onyx.Tests.MultiTenancy
             var registerResult = await _tenantRegistrationAppService.RegisterTenant(new RegisterTenantInput
             {
                 EditionId = edition.Id,
-                AdminEmailAddress = "admin@volosoft.com",
+                AdminEmailAddress = "admin@test.com",
                 AdminPassword = "123qwe",
-                Name = "Volosoft",
+                Name = "test",
                 SubscriptionStartType = SubscriptionStartType.Free,
-                TenancyName = "Volosoft"
+                TenancyName = "test"
             });
 
             //Assert
@@ -91,11 +91,11 @@ namespace Sixoclock.Onyx.Tests.MultiTenancy
             var exception = await Assert.ThrowsAsync<Exception>(async () => await _tenantRegistrationAppService.RegisterTenant(new RegisterTenantInput
             {
                 EditionId = edition.Id,
-                AdminEmailAddress = "admin@volosoft.com",
+                AdminEmailAddress = "admin@test.com",
                 AdminPassword = "123qwe",
-                Name = "Volosoft",
+                Name = "test",
                 SubscriptionStartType = SubscriptionStartType.Trial,
-                TenancyName = "Volosoft"
+                TenancyName = "test"
             }));
 
             exception.Message.ShouldBe("Trial is not available for this edition !");
@@ -124,11 +124,11 @@ namespace Sixoclock.Onyx.Tests.MultiTenancy
             var result = await _tenantRegistrationAppService.RegisterTenant(new RegisterTenantInput
             {
                 EditionId = edition.Id,
-                AdminEmailAddress = "admin@volosoft.com",
+                AdminEmailAddress = "admin@test.com",
                 AdminPassword = "123qwe",
-                Name = "Volosoft",
+                Name = "test",
                 SubscriptionStartType = SubscriptionStartType.Trial,
-                TenancyName = "Volosoft"
+                TenancyName = "test"
             });
 
             //Assert
@@ -187,11 +187,11 @@ namespace Sixoclock.Onyx.Tests.MultiTenancy
             var result = await _tenantRegistrationAppService.RegisterTenant(new RegisterTenantInput
             {
                 EditionId = edition.Id,
-                AdminEmailAddress = "admin@volosoft.com",
+                AdminEmailAddress = "admin@test.com",
                 AdminPassword = "123qwe",
-                Name = "Volosoft",
+                Name = "test",
                 SubscriptionStartType = SubscriptionStartType.Paid,
-                TenancyName = "Volosoft",
+                TenancyName = "test",
                 Gateway = SubscriptionPaymentGatewayType.Paypal,
                 PaymentId = samplePaymentId
             });
