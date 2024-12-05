@@ -1,0 +1,302 @@
+@using Sixoclock.Onyx.Web.Areas.App.Models.Common.Modals
+
+@using Sixoclock.Onyx.Web.Areas.App.Models.Tags
+@model TagViewDetails
+
+<script src="~/lib/horizontal-timeline/horizontal-timeline.js"></script>
+
+
+<div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+            <h4 class="modal-title">
+                <span></span>
+            </h4>
+        </div>
+        <div class="modal-body">
+            <div class="tabbable-line">
+                <ul class="nav nav-tabs ">
+                    <li class="active">
+                        <a href="#Transaction" data-toggle="tab" aria-expanded="true">
+                            @L("Transaction")
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="#Details" data-toggle="tab" aria-expanded="false">
+                            @L("Details")
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="#TagDetails" data-toggle="tab" aria-expanded="false">
+                            @L("TagDetails")
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="#MeterValues" data-toggle="tab" aria-expanded="false">
+                            @L("MeterValues")
+                        </a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="Transaction">
+                        <div class="form-group">
+                            <label>@L("UserStartedCharge") @Model.TransactionStartUserName</label>
+
+                        </div>
+                        <div class="form-group">
+                            <label>@L("UserEndedCharge") @Model.TransactionStopUserName</label>
+
+                        </div>
+                        @*<div class="form-group">
+                            <label class="form-md-floating-label">@L("Power") : @Model.PowerName</label>
+                        </div>*@
+                        <div class="form-group">
+                            <label class="form-md-floating-label">@L("Result") : </label>
+                        </div>
+                        @*<div class="form-group">
+                            <label class="form-md-floating-label"> @Model.Place @L("ChargerNumber") @Model.ConnectorNumber</label>
+                        </div>*@
+                        <div class="cd-horizontal-timeline mt-timeline-horizontal" data-spacing="60">
+                            <div class="timeline mt-timeline-square">
+                                <div class="events-wrapper">
+                                    <div class="events">
+                                        <ol>
+                                            @foreach (var meterValue in Model.ConnectorMeterValues.Items)
+                                            {
+                                                <li>
+                                                    <a href="#" data-date="@meterValue.MeterTime" class="border-after-blue bg-after-blue selected">@meterValue.MeterValue KW</a>
+                                                </li>
+                                            }
+                                        </ol>
+                                        <span class="filling-line bg-blue" aria-hidden="true"></span>
+                                    </div>
+                                    <!-- .events -->
+                                </div>
+                                <!-- .events-wrapper -->
+                                <ul class="cd-timeline-navigation mt-ht-nav-icon">
+                                    <li>
+                                        <a href="#" class="prev inactive btn blue md-skip">
+                                            <i class="fa fa-chevron-left"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="next btn blue md-skip">
+                                            <i class="fa fa-chevron-right"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <!-- .cd-timeline-navigation -->
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="tab-pane" id="Details">
+                        <div class="form-group">
+                            <label>@L("UserStartedCharge") @Model.TransactionStartUserName</label>
+
+                        </div>
+                        <div class="form-group">
+                            <label>@L("UserEndedCharge") @Model.TransactionStopUserName</label>
+
+                        </div>
+                        @*<div class="form-group">
+                            <label class="form-md-floating-label">@L("Power") : @Model.PowerName</label>
+                        </div>*@
+                        <div class="form-group">
+                            <label class="form-md-floating-label">@L("Result") : </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-md-floating-label">Details </label>
+                        </div>
+                        <table class="table-striped table-bordered ">
+                            <tr>
+                                <td class="col-lg-6">
+                                    Started by
+                                </td>
+                                <td class="col-lg-6">
+                                    @Model.TransactionStartUserName
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-lg-6">
+                                    Stopped by
+                                </td>
+                                <td class="col-lg-6">
+                                    @Model.TransactionStopUserName
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-lg-6">
+                                    Transaction Status
+                                </td>
+                                <td class="col-lg-6">
+                                    @Model.TransactionStatusValue
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-lg-6">
+                                    Transaction ID
+                                </td>
+                                <td class="col-lg-6">
+                                    @Model.Id
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-lg-6">
+                                    Cancel Reason
+                                </td>
+                                <td class="col-lg-6"></td>
+                            </tr>
+                            <tr>
+                                <td class="col-lg-6">
+                                    Start Tag
+                                </td>
+                                <td class="col-lg-6"></td>
+                            </tr>
+                            <tr>
+                                <td class="col-lg-6">
+                                    Stop Tag
+                                </td>
+                                <td class="col-lg-6"></td>
+                            </tr>
+                            <tr>
+                                <td class="col-lg-6">
+                                    Start meter value
+                                </td>
+                                <td class="col-lg-6"></td>
+                            </tr>
+                            <tr>
+                                <td class="col-lg-6">
+                                    Stop meter value
+                                </td>
+                                <td class="col-lg-6"></td>
+                            </tr>
+                            <tr>
+                                <td class="col-lg-6">
+                                    Chargepoint Identity
+                                </td>
+                                <td class="col-lg-6">@Model.Identity</td>
+                            </tr>
+                            @*<tr>
+                                    <td class="col-lg-6">
+                                        Connector Id
+                                    </td>
+                                    <td class="col-lg-6">@Model.ConnectorId</td>
+                                </tr>*@
+                        </table>
+                    </div>
+                    <div class="tab-pane" id="TagDetails">
+                        <div class="form-group">
+                            <label>@L("UserStartedCharge") @Model.TransactionStartUserName</label>
+
+                        </div>
+                        <div class="form-group">
+                            <label>@L("UserEndedCharge") @Model.TransactionStopUserName</label>
+
+                        </div>
+                        @*<div class="form-group">
+                            <label class="form-md-floating-label">@L("Power") : @Model.PowerName</label>
+                        </div>*@
+                        <div class="form-group">
+                            <label class="form-md-floating-label">@L("Result") : </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-md-floating-label">Tag transaction events </label>
+                        </div>
+                        <table class="table-bordered table-striped">
+                            <tr>
+                                <th class="col-md-1">
+                                    User
+                                </th>
+                                <th class="col-md-3">
+                                    Transaction type
+                                </th>
+                                <th class="col-md-1">
+                                    Tag
+                                </th>
+                                <th class="col-md-1">
+                                    Parent
+                                </th>
+                                <th class="col-md-1">
+                                    Event
+                                </th>
+                                <th class="col-md-1">
+                                    Date
+                                </th>
+                                <th class="col-md-2">
+                                    Time
+                                </th>
+                                <th class="col-md-2">
+                                    Expiry
+                                </th>
+                            </tr>
+                            <tr>
+                                @foreach (var tag in Model.TagDetails.Items)
+                                {
+                                    <td>@tag.UserName</td>
+                                    <td>@tag.TagTransactionType</td>
+                                    <td>@tag.TagId</td>
+                                    <td>@tag.Parent</td>
+                                    <td></td>
+                                    <td>@tag.Created</td>
+                                    <td></td>
+                                    <td>@tag.Expiry</td>
+                                }
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="tab-pane" id="MeterValues">
+                        <div class="form-group">
+                            <label>@L("Transaction") @Model.Id</label>
+
+                        </div>
+                        <div class="form-group">
+                            <label>@L("ChargerNumber") @Model.Place</label>
+
+                        </div>
+                        @*<div class="form-group">
+                                <label class="form-md-floating-label">@L("ConnectorId") : @Model.ConnectorId</label>
+                            </div>*@
+                        <div class="form-group">
+                            <label class="form-md-floating-label">@L("MeterType") : @Model.MeterType </label>
+                        </div>
+                        <table class="table-bordered table-striped">
+                            <tr>
+                                <th class="col-md-2">Date</th>
+                                <th class="col-md-2">Time</th>
+                                <th class="col-md-2">Value</th>
+                                <th class="col-md-2">Unit</th>
+                                <th class="col-md-2">Type</th>
+                                <th class="col-md-2">Mesaurand</th>
+                                <th class="col-md-2">Context</th>
+                                <th class="col-md-2">Location</th>
+                                <th class="col-md-2">Phase</th>
+                                <th class="col-md-2">Format</th>
+                            </tr>
+                            <tr>
+                                @foreach (var conn in Model.ConnectorMeterValues.Items)
+                                {
+                                    <td>@conn.Created</td>
+                                    <td>@conn.MeterTime</td>
+                                    <td>@conn.MeterValue</td>
+                                    <td>@conn.UnitName</td>
+                                    <td>@conn.MeterValueType</td>
+                                    <td>@conn.MeasurandType</td>
+                                    <td>@conn.ContextName</td>
+                                    <td>@conn.LocationName</td>
+                                    <td>@conn.PhaseName</td>
+                                    <td>@conn.FormatType</td>
+                                }
+
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn default close-button" data-dismiss="modal"><i class="fa fa-close"></i> <span>@L("Close")</span></button>
+        </div>
+    </div>
+</div>

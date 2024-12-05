@@ -1,0 +1,164 @@
+@using Abp.Json
+@using Sixoclock.Onyx.MultiTenancy
+@using Sixoclock.Onyx.Web.Areas.App.Models.Common.Modals
+
+@using Sixoclock.Onyx.Web.Areas.App.Models.Customer
+@model CreateOrEditCustomerViewModel
+<script>
+    window.passwordComplexitySetting = @Html.Raw(Model.PasswordComplexitySetting.ToJsonString(indented: true));
+</script>
+@Html.Partial("~/Areas/App/Views/Common/Modals/_ModalHeader.cshtml", new ModalHeaderViewModel(L("CreateCustomer")))
+
+<div class="modal-body">
+    <div class="tabbable-line">
+        <ul class="nav nav-tabs ">
+            <li class="active">
+                <a href="#General" data-toggle="tab" aria-expanded="true">
+                    @L("General")
+                </a>
+            </li>
+            @if (Model.Customer.Id <= 0)
+            {
+                <li class="">
+                    <a href="#tenantSetting" data-toggle="tab" aria-expanded="false">
+                        @L("tenantSetting")
+                    </a>
+                </li>
+            }
+       
+        </ul>
+        <div class="tab-content">
+   
+            <div class="tab-pane active" id="General">
+                <form role="form" novalidate class="form-validation">
+                    <div class="form-group form-md-line-input form-md-floating-label no-hint">
+                        <input type="hidden" name="Id" value="@Model.Customer.Id"/>
+                        <input type="hidden" name="TenantId" value="@Model.Customer.TenantId"/>
+                        <div class="form-group">
+                            <label class="form-md-floating-label">@L("CustomerName")</label>
+                            <input class="form-control" type="text" name="CustomerName" value="@Model.Customer.CustomerName" required>
+                        </div>
+
+                    </div>
+
+                    <div class="form-group form-md-line-input form-md-floating-label no-hint">
+                        <div class="form-group">
+                            <label class="form-md-floating-label">@L("Address1")</label>
+                            <input type="text" name="Address1" class="form-control" value="@Model.Customer.Address1" required/>
+                        </div>
+                    </div>
+                    <div class="form-group form-md-line-input form-md-floating-label no-hint">
+                        <div class="form-group">
+                            <label class="form-md-floating-label">@L("Address2")</label>
+                            <input type="text" name="Address2" class="form-control" value="@Model.Customer.Address2"/>
+                        </div>
+                    </div>
+                    <div class="form-group form-md-line-input form-md-floating-label no-hint">
+                        <div class="form-group">
+                            <label class="form-md-floating-label">@L("ZipCode")</label>
+                            <input type="number" name="ZipCode" class="form-control" value="@Model.Customer.ZipCode" required/>
+                        </div>
+                    </div>
+                    <div class="form-group form-md-line-input form-md-floating-label no-hint">
+                        <div class="form-group">
+                            <label class="form-md-floating-label">@L("City")</label>
+                            <input type="text" name="City" class="form-control" value="@Model.Customer.City" required/>
+                        </div>
+                    </div>
+                    <div class="form-group form-md-line-input form-md-floating-label no-hint">
+                        <div class="form-group">
+                            <label class="form-md-floating-label">@L("Country")</label>
+                            <select name="CountryId" class="form-control bs-select" required>
+                                <option value="0">@L("DropdownDefault")</option>
+                                @for (int i = 0; i < ViewBag.Countries.Items.Count; i++)
+                                {
+                                    @if (Model.Customer.CountryId == ViewBag.Countries.Items[i].Id)
+                                     {
+
+                                         <option value="@ViewBag.Countries.Items[i].Id" selected>@ViewBag.Countries.Items[i].Name</option>
+                                     }
+                                     else
+                                     {
+                                         <option value="@ViewBag.Countries.Items[i].Id">@ViewBag.Countries.Items[i].Name</option>
+                                     }
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group form-md-line-input form-md-floating-label no-hint">
+                        <div class="form-group">
+                            <label class="form-md-floating-label">@L("Phone1")</label>
+                            <input type="number" name="Phone1" class="form-control" value="@Model.Customer.Phone1"/>
+                        </div>
+                    </div>
+                    <div class="form-group form-md-line-input form-md-floating-label no-hint">
+                        <div class="form-group">
+                            <label class="form-md-floating-label">@L("Phone2")</label>
+                            <input type="number" name="Phone2" class="form-control" value="@Model.Customer.Phone2"/>
+                        </div>
+                    </div>
+                    <div class="form-group form-md-line-input form-md-floating-label no-hint">
+                        <div class="form-group">
+                            <label class="form-md-floating-label">@L("Segment")</label>
+                            <select name="SegmentId" class="form-control bs-select" required>
+                                <option value="0">@L("DropdownDefault")</option>
+                                @for (int i = 0; i < ViewBag.Segments.Items.Count; i++)
+                                {
+                                    @if (Model.Customer.SegmentId == ViewBag.Segments.Items[i].Id)
+                                     {
+
+                                         <option value="@ViewBag.Segments.Items[i].Id" selected>@ViewBag.Segments.Items[i].Name</option>
+                                     }
+                                     else
+                                     {
+                                         <option value="@ViewBag.Segments.Items[i].Id">@ViewBag.Segments.Items[i].Name</option>
+                                     }
+                                }
+                            </select>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+            @if (Model.Customer.Id <= 0)
+            {
+                <div class="tab-pane" id="tenantSetting">
+                    <form role="form" novalidate class="form-validation">
+                        <div class="form-group form-md-line-input form-md-floating-label">
+                            <input class="form-control" type="text" name="TenancyName" required maxlength="@Tenant.MaxTenancyNameLength" regex="@Tenant.TenancyNameRegex">
+                            <label>@L("TenancyName")</label>
+                        </div>
+
+                        <div class="form-group form-md-line-input form-md-floating-label">
+                            <input type="email" name="AdminEmailAddress" class="form-control" required maxlength="@Sixoclock.Onyx.Authorization.Users.User.MaxEmailAddressLength">
+                            <label>@L("AdminEmailAddress")</label>
+                        </div>
+
+                        <div class="md-checkbox-list">
+                            <div class="md-checkbox">
+                                <input id="CreateTenant_SetRandomPassword" class="md-check" type="checkbox" name="SetRandomPassword" value="true" checked="checked"/>
+                                <label for="CreateTenant_SetRandomPassword">
+                                    <span class="inc"></span>
+                                    <span class="check"></span>
+                                    <span class="box"></span>
+                                    @L("SetRandomPassword")
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group form-md-line-input form-md-floating-label no-hint tenant-admin-password" style="display: none">
+                            <input id="CreateTenant_AdminPassword" @((Model.Customer.Id > 0) ? "disabled" : "") type="password" name="AdminPassword" class="form-control" maxlength="@Sixoclock.Onyx.Authorization.Users.User.MaxPlainPasswordLength">
+                            <label>@L("Password")</label>
+                        </div>
+
+                        <div class="form-group form-md-line-input form-md-floating-label tenant-admin-password" style="display: none">
+                            <input type="password" name="AdminPasswordRepeat" class="form-control" maxlength="@Sixoclock.Onyx.Authorization.Users.User.MaxPlainPasswordLength" equalto="#CreateTenant_AdminPassword">
+                            <label>@L("PasswordRepeat")</label>
+                        </div>
+                    </form>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@Html.Partial("~/Areas/App/Views/Common/Modals/_ModalFooterWithSaveAndCancel.cshtml")

@@ -1,0 +1,59 @@
+﻿@using Abp.Configuration
+@using Abp.Extensions
+@using Abp.Json
+@using Abp.Zero.Configuration
+@using Sixoclock.Onyx.Web.Areas.App.Models.Users
+@using Sixoclock.Onyx.Authorization
+
+@section Scripts
+    {
+    <environment names="Development">
+        <script src="~/lib/typeahead.js/dist/typeahead.bundle.js" asp-append-version="true"></script>
+        <script src="~/metronic/assets/global/scripts/typeahead.min.js" asp-append-version="true"></script>
+    </environment>
+    <environment names="Staging,Production">
+        <script src="~/lib/typeahead.js/dist/typeahead.bundle.js" asp-append-version="true"></script>
+        <script src="~/metronic/assets/global/scripts/typeahead.min.js" asp-append-version="true"></script>
+    </environment>
+
+
+}
+
+<div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+            <h4 class="modal-title">
+                <span>@L("UserRuleSets")</span>
+            </h4>
+        </div>
+        <div class="modal-body">
+            <input id="RuleSetId" type="hidden" value="@ViewBag.UserRuleSetId" />
+            <div class="row" style="margin-bottom:20px;">
+                <div class="col-xs-9">
+                    <span class="twitter-typeahead">
+                        <input id="ResultSet" class="form-control tt-input" />    
+                    </span>
+                </div>
+                <div class="col-xs-3 text-right">
+                    
+                    @if (IsGranted(AppPermissions.Pages_UserRuleSets_Add))
+                    {
+                    <button id="AddUserRuleSetButton" disabled class="btn btn-primary blue"><i class="fa fa-plus"></i> @L("AddUserRuleSet")</button>
+                    }
+                </div>
+            </div>
+            <table id="UserRuleSetsTable" class="display table table-striped table-bordered table-hover dt-responsive nowrap">
+                <thead>
+                    <tr>
+                        <th>@L("Actions")</th>
+                        <th>@L("RuleName")</th>
+                        <th>@L("RuleTranslation")</th>
+                        <th>@L("RuleCount")</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>
+

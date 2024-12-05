@@ -1,0 +1,49 @@
+@using System.Threading.Tasks
+@using Sixoclock.Onyx.Authorization
+@using Sixoclock.Onyx.Web.Areas.App.Startup
+@using Sixoclock.Onyx.Web.Startup
+
+@model Sixoclock.Onyx.Web.Areas.App.Models.Transactions.TransactionsViewModel
+
+@{
+    ViewBag.CurrentPageName = AppPageNames.Common.UserTransactions;
+}
+
+@section Scripts
+{
+    <environment names="Development">
+        <script src="~/view-resources/Areas/App/Views/UserTransactions/Index.js" asp-append-version="true"></script>
+    </environment>
+<environment names="Staging,Production">
+    <script src="~/view-resources/Areas/App/Views/UserTransactions/Index.min.js" asp-append-version="true"></script>
+</environment>
+}
+<div class="row margin-bottom-5">
+    <div class="col-xs-6">
+        <div class="page-head">
+            <div class="page-title">
+                <h1>
+                    <span>@L("UserTransactionsHeader")</span> <small>@L("UserTransactionsHeaderInfo")</small>
+                </h1>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="portlet light margin-bottom-0">
+    <div class="portlet-body">
+        <table id="TransactionsTable" class="display table table-striped table-bordered table-hover dt-responsive nowrap">
+            <thead>
+                <tr>
+                    <th>@L("Start")</th>
+                    <th>@L("Duration")</th>
+                    <th>@L("Kwh")</th>
+                    <th>@L("Tag")</th>
+                    <th>@L("Installation")</th>
+                    <th>@L("Group")</th>
+                    <th>@L("Charger")</th>
+                    <th>@L("Cost")</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>

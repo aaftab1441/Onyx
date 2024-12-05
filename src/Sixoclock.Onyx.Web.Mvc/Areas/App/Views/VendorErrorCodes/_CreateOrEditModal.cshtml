@@ -1,0 +1,60 @@
+@using Sixoclock.Onyx.Web.Areas.App.Models.Common.Modals
+
+@using Sixoclock.Onyx.Web.Areas.App.Models.VendorErrorCodes
+@model CreateOrEditVendorErrorCodeViewModel
+
+@Html.Partial("~/Areas/App/Views/Common/Modals/_ModalHeader.cshtml", new ModalHeaderViewModel(L("CreateErrorCode")))
+
+<div class="modal-body">
+    <form role="form" novalidate class="form-validation">
+        
+        <div class="form-group form-md-line-input form-md-floating-label no-hint">
+            <div class="form-group">
+                <label>@L("SelectVendorErrorCode")</label>
+                <select name="VendorId" class="form-control bs-select" required>
+                    <option value="0">@L("DropdownDefault")</option>
+                    @for (int i = 0; i < ViewBag.Vendors.Items.Count; i++)
+                    {
+                        @if (Model.VendorErrorCode.VendorId == ViewBag.Vendors.Items[i].Id)
+                        {
+
+                            <option value="@ViewBag.Vendors.Items[i].Id" selected>@ViewBag.Vendors.Items[i].Name</option>
+                        }
+                        else
+                        {
+                            <option value="@ViewBag.Vendors.Items[i].Id">@ViewBag.Vendors.Items[i].Name</option>
+                        }
+
+                    }
+                </select>
+            </div>
+
+        </div>
+        <div class="form-group form-md-line-input form-md-floating-label no-hint">
+            <div class="form-group">
+                <input type="hidden" name="Id" value="@Model.VendorErrorCode.Id" />
+                <input type="hidden" name="TenantId" value="@Model.VendorErrorCode.TenantId" />
+                <label class="form-md-floating-label">@L("Code")</label>
+                <input class="form-control" type="number" name="ErrorCode" value="@Model.VendorErrorCode.ErrorCode" required>
+            </div>
+
+        </div>
+        <div class="form-group form-md-line-input form-md-floating-label no-hint">
+            <div class="form-group">
+                <label class="form-md-floating-label">@L("Text")</label>
+                <input class="form-control" type="text" name="ErrorText" value="@Model.VendorErrorCode.ErrorText" required>
+            </div>
+
+        </div>
+        <div class="form-group form-md-line-input form-md-floating-label no-hint">
+            <div class="form-group">
+                <label class="form-md-floating-label">@L("Comment")</label>
+                <input class="form-control" type="text" name="Comment" value="@Model.VendorErrorCode.Comment" required>
+            </div>
+
+        </div>
+        
+    </form>
+</div>
+
+@Html.Partial("~/Areas/App/Views/Common/Modals/_ModalFooterWithSaveAndCancel.cshtml")

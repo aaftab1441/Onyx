@@ -1,0 +1,296 @@
+@using Sixoclock.Onyx.Web.Areas.App.Models.Common.Modals
+
+@using Sixoclock.Onyx.Web.Areas.App.Models.ChargepointModels
+@model CreateOrEditChargepointModelViewModel
+
+<div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+            <h4 class="modal-title">
+                <span>@L("CreateChargepointModel")</span>
+            </h4>
+        </div>
+        <div class="modal-body">
+            <div class="tabbable-line">
+                <ul class="nav nav-tabs ">
+                    <li class="active">
+                        <a href="#General" data-toggle="tab" aria-expanded="true">
+                            @L("General")
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="#Description" data-toggle="tab" aria-expanded="false">
+                            @L("Description")
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="#Image" data-toggle="tab" aria-expanded="false">
+                            @L("Image")
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="#Release" data-toggle="tab" aria-expanded="false">
+                            @L("Release")
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="#Communication" data-toggle="tab" aria-expanded="false">
+                            @L("Communication")
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="#Electrical" data-toggle="tab" aria-expanded="false">
+                            @L("Electrical")
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="#Other" data-toggle="tab" aria-expanded="false">
+                            @L("Other")
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="#OCPP" data-toggle="tab" aria-expanded="false">
+                            @L("OCPP")
+                        </a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="General">
+                        <form name="GeneralInformationsForm" role="form" novalidate class="form-validation">
+                            <input type="hidden" name="Id" value="@Model.ChargepointModel.Id" />
+                            <input type="hidden" name="TenantId" value="@Model.ChargepointModel.TenantId" />
+                            <table class="table-advance">
+                                <tr>
+                                    <td class="col-sm-4">
+                                        <div class="form-group">
+                                            <label>@L("SelectModelVendor")</label>
+                                            <select name="VendorId" class="form-control bs-select" required>
+                                                <option value="0">@L("DropdownDefault")</option>
+                                                @for (int i = 0; i < ViewBag.Vendors.Items.Count; i++)
+                                                {
+                                                    @if (Model.ChargepointModel.VendorId == ViewBag.Vendors.Items[i].Id)
+                                                    {
+
+                                                        <option value="@ViewBag.Vendors.Items[i].Id" selected>@ViewBag.Vendors.Items[i].Name</option>
+                                                    }
+                                                    else
+                                                    {
+                                                        <option value="@ViewBag.Vendors.Items[i].Id">@ViewBag.Vendors.Items[i].Name</option>
+                                                    }
+
+                                                }
+                                            </select>
+                                        </div>
+                                    </td>
+                                    <td class="col-sm-4">
+                                        <div class="form-group">
+                                            <label>@L("Mount")</label>
+                                            <select name="MountTypeId" class="form-control bs-select" required>
+                                                <option value="0">@L("DropdownDefault")</option>
+                                                @for (int i = 0; i < ViewBag.MountTypes.Items.Count; i++)
+                                                {
+                                                    @if (Model.ChargepointModel.MountTypeId == ViewBag.MountTypes.Items[i].Id)
+                                                    {
+
+                                                        <option value="@ViewBag.MountTypes.Items[i].Id" selected>@ViewBag.MountTypes.Items[i].Name</option>
+                                                    }
+                                                    else
+                                                    {
+                                                        <option value="@ViewBag.MountTypes.Items[i].Id">@ViewBag.MountTypes.Items[i].Name</option>
+                                                    }
+
+                                                }
+                                            </select>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3">
+                                        <label class="form-md-floating-label">@L("Name")</label>
+                                        <input class="form-control" type="text" name="ModelName" value="@Model.ChargepointModel.ModelName" required>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3">
+                                        <label class="form-md-floating-label"> </label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3">
+                                        <label class="form-md-floating-label">@L("Comment")</label>
+                                        <input class="form-control" type="text" name="Comment" value="@Model.ChargepointModel.Comment" required>
+                                    </td>
+                                </tr>
+                            </table>
+                        </form>
+                    </div>
+                    <div class="tab-pane" id="Description">
+                        <form name="DescriptionInformationsForm" role="form" novalidate class="form-validation">
+                            <div>To be implemented when design is completed</div>
+                        </form>
+                    </div>
+                    <div class="tab-pane" id="Image">
+                        <form name="ImageInformationsForm" role="form" novalidate class="form-validation">
+                            <div>To be implemented</div>
+                        </form>
+                    </div>
+                    <div class="tab-pane" id="Release">
+                        <form name="ReleaseInformationsForm" role="form" novalidate class="form-validation">
+                            <label class="form-md-floating-label">@L("SelectReleases")</label>
+                            <table class="table-advance">
+                                @foreach (var option in Model.ChargepointModel.Releases)
+                                {
+                                    <tr>
+                                        <td>
+                                            <label><input name="ChargeReleaseOptionId" value="@option.Id" type="checkbox" @(Html.Raw(option.Assigned ? "checked=\"checked\"" : "")) /> @option.Option</label>
+                                        </td>
+                                    </tr>
+                                }
+                            </table>
+                        </form>
+                    </div>
+                    <div class="tab-pane" id="Communication">
+                        <form name="CommunicationInformationsForm" role="form" novalidate class="form-validation">
+                            <label class="form-md-floating-label">@L("SelectCommunication")</label>
+                            <table class="table-advance">
+                                @foreach (var com in Model.ChargepointModel.Coms)
+                                {
+                                    <tr>
+                                        <td>
+                                            <label><input name="ComOptionId" value="@com.Id" type="checkbox" @(Html.Raw(com.Assigned ? "checked=\"checked\"" : "")) /> @com.Option</label>
+                                        </td>
+                                    </tr>
+                                }
+                            </table>
+                        </form>
+                    </div>
+                    <div class="tab-pane" id="Electrical">
+                        <form name="ElectricalInformationsForm" role="form" novalidate class="form-validation">
+                            <label class="form-md-floating-label">@L("SelectElectrical")</label>
+                            <table class="table-advance">
+                                @foreach (var electric in Model.ChargepointModel.Electrics)
+                                {
+                                    <tr>
+                                        <td>
+                                            <label><input name="ElectricalOptionId" value="@electric.Id" type="checkbox" @(Html.Raw(electric.Assigned ? "checked=\"checked\"" : "")) /> @electric.Option</label>
+                                        </td>
+                                    </tr>
+                                }
+                            </table>
+                        </form>
+                    </div>
+                    <div class="tab-pane" id="Other">
+                        <form name="OtherInformationsForm" role="form" novalidate class="form-validation">
+                            <label class="form-md-floating-label">@L("SelectOther")</label>
+                            <table class="table-advance">
+                                @foreach (var other in Model.ChargepointModel.Others)
+                                {
+                                    <tr>
+                                        <td>
+                                            <label><input name="OtherOptionId" value="@other.Id" type="checkbox" @(Html.Raw(other.Assigned ? "checked=\"checked\"" : "")) /> @other.Option</label>
+                                        </td>
+                                    </tr>
+                                }
+                            </table>
+                        </form>
+                    </div>
+                    <div class="tab-pane" id="OCPP">
+                        <form name="OCPPInformationsForm" role="form" novalidate class="form-validation">
+
+                            <table class="table-advance">
+                                <tr>
+                                    <td class="col-sm-4">
+                                        
+                                        <div class="form-group">
+                                            <label>@L("SelectOCPPVersion")</label>
+                                            <select name="OCPPVersionId" id="OCPPVersionId" class="form-control bs-select" required>
+                                                <option value="0">@L("DropdownDefault")</option>
+                                                @for (int i = 0; i < ViewBag.OCPPVersions.Items.Count; i++)
+                                                {
+                                                    @if (Model.ChargepointModel.OCPPVersionId == ViewBag.OCPPVersions.Items[i].Id)
+                                                    {
+
+                                                        <option value="@ViewBag.OCPPVersions.Items[i].Id" selected>@ViewBag.OCPPVersions.Items[i].Name</option>
+                                                    }
+                                                    else
+                                                    {
+                                                        <option value="@ViewBag.OCPPVersions.Items[i].Id">@ViewBag.OCPPVersions.Items[i].Name</option>
+                                                    }
+
+                                                }
+                                            </select>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-sm-4">
+                                        <div class="form-group">
+                                            <label>@L("SelectOCPPTransport")</label>
+                                            <select name="OCPPTransportId" class="form-control bs-select" required>
+                                                <option value="0">@L("DropdownDefault")</option>
+                                                @for (int i = 0; i < ViewBag.OCPPTransports.Items.Count; i++)
+                                                {
+                                                    @if (Model.ChargepointModel.OCPPTransportId == ViewBag.OCPPTransports.Items[i].Id)
+                                                    {
+
+                                                        <option value="@ViewBag.OCPPTransports.Items[i].Id" selected>@ViewBag.OCPPTransports.Items[i].Name</option>
+                                                    }
+                                                    else
+                                                    {
+                                                        <option value="@ViewBag.OCPPTransports.Items[i].Id">@ViewBag.OCPPTransports.Items[i].Name</option>
+                                                    }
+
+                                                }
+                                            </select>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                            </table>
+                        </form>
+
+
+                        @if (Model.ChargepointModel.OCPPFeatures.OCPPFeatures.Count() > 0)
+                        {
+                            <form name="FeaturesInformationsForm" id="OCPPFeaturesForm" role="form" novalidate class="form-validation">
+                                <label class="form-md-floating-label">Features</label>
+                                <table class="table-advance" id="OCPPFeatures">
+                                    @foreach (var feature in Model.ChargepointModel.OCPPFeatures.OCPPFeatures)
+                                    {
+                                        <tr>
+                                            <td>
+                                                <label class="control-label col-sm-12 pull-left"><input name="ModelFeatureId" value="@(feature.Id + "_" + feature.Name)" type="checkbox" @(Html.Raw(feature.Assigned ? "checked=\"checked\"" : "")) /> @feature.Name</label>
+                                            </td>
+                                        </tr>
+                                    }
+                                </table>
+                            </form>
+                        }
+                        else
+                        {
+                            <form name="FeaturesInformationsForm" id="OCPPFeaturesForm" role="form" novalidate class="form-validation" style="display:none">
+                                <label class="form-md-floating-label">Features</label>
+                                <table class="table-advance" id="OCPPFeatures">
+                                    @foreach (var feature in Model.ChargepointModel.OCPPFeatures.OCPPFeatures)
+                                    {
+                                        <tr>
+                                            <td>
+                                                <label class="control-label col-sm-12 pull-left"><input name="ModelFeatureId" value="@(feature.Id + "_" + feature.Name)" type="checkbox" @(Html.Raw(feature.Assigned ? "checked=\"checked\"" : "")) /> @feature.Name</label>
+                                            </td>
+                                        </tr>
+                                    }
+                                </table>
+                            </form>
+
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn default close-button" data-dismiss="modal">@L("Cancel")</button>
+            <button type="button" class="btn blue save-button"><i class="fa fa-save"></i> <span>@L("Save")</span></button>
+        </div>
+    </div>
+</div>

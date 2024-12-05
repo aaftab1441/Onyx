@@ -1,0 +1,163 @@
+﻿@using Sixoclock.Onyx.Web.Areas.App.Models.TagTransactions
+@model DashboardViewModel
+
+<div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+            <h4 class="modal-title">
+                <span>@(ViewBag.DashBoard)</span>
+            </h4>
+        </div>
+        <div class="modal-body">
+            <div class="tabbable-line">
+                <div class="tab-content">
+                    <div class="row margin-top-10">
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                            <div class="dashboard-stat2">
+                                <div class="display">
+                                    <div class="number">
+                                        <h3 class="font-red-haze counterup" id="energyThisWeek">@(Model.CurrentWeekEnergy == 0 ? "..." : Model.CurrentWeekEnergy.ToString())</h3>
+                                        <small>Energy This Week</small>
+                                    </div>
+                                </div>
+                                <div class="progress-info">
+                                    <div class="progress">
+                                        <span style="width: 85%;" class="progress-bar progress-bar-success blue-soft">
+                                            <span class="sr-only">85% change</span>
+                                        </span>
+                                    </div>
+                                    <div class="status">
+                                        <div class="status-title">
+                                            change
+                                        </div>
+                                        <div class="status-number">
+                                            <span class="counterup" id="energyThisWeekChange">@(Model.CurrentWeekEnergyChange == 0 ? "..." : Model.CurrentWeekEnergyChange.ToString())</span>%
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                            <div class="dashboard-stat2">
+                                <div class="display">
+                                    <div class="number">
+                                        <h3 class="font-red-haze counterup" id="chargeTimeThisWeek">@(Model.CurrentWeekChargetime == 0 ? "..." : Model.CurrentWeekEnergy.ToString())</h3>
+                                        <small>Charge time this week</small>
+                                    </div>
+                                </div>
+                                <div class="progress-info">
+                                    <div class="progress">
+                                        <span style="width: 85%;" class="progress-bar progress-bar-success blue-soft">
+                                            <span class="sr-only">85% change</span>
+                                        </span>
+                                    </div>
+                                    <div class="status">
+                                        <div class="status-title">
+                                            change
+                                        </div>
+                                        <div class="status-number">
+                                            <span class="counterup" id="chargeTimeThisWeekChange">@(Model.CurrentWeekChargetimeChange == 0 ? "..." : Model.CurrentWeekChargetimeChange.ToString())</span>%
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                            <div class="dashboard-stat2">
+                                <div class="display">
+                                    <div class="number">
+                                        <h3 class="font-red-haze counterup" id="transactionsThisWeek">@(Model.CurrentWeekTransactions == 0 ? "..." : Model.CurrentWeekTransactions.ToString())</h3>
+                                        <small>Transactions This Week</small>
+                                    </div>
+                                </div>
+                                <div class="progress-info">
+                                    <div class="progress">
+                                        <span style="width: 85%;" class="progress-bar progress-bar-success blue-soft">
+                                            <span class="sr-only">85% change</span>
+                                        </span>
+                                    </div>
+                                    <div class="status">
+                                        <div class="status-title">
+                                            change
+                                        </div>
+                                        <div class="status-number">
+                                            <span class="counterup" id="transactionsThisWeekChange">@(Model.CurrentWeekTransactionsChange == 0 ? "..." : Model.CurrentWeekTransactionsChange.ToString())</span>%
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                            <div class="dashboard-stat2">
+                                <div class="display">
+                                    <div class="number">
+                                        <h3 class="font-red-haze counterup" id="cO2SavedThisWeek">@(Model.CurrentWeekCo2Saved == 0 ? "..." : Model.CurrentWeekCo2Saved.ToString())</h3>
+                                        <small>Co2saved this week</small>
+                                    </div>
+                                </div>
+                                <div class="progress-info">
+                                    <div class="progress">
+                                        <span style="width: 85%;" class="progress-bar progress-bar-success blue-soft">
+                                            <span class="sr-only">85% change</span>
+                                        </span>
+                                    </div>
+                                    <div class="status">
+                                        <div class="status-title">
+                                            change
+                                        </div>
+                                        <div class="status-number">
+                                            <span class="counterup" id="cO2SavedThisWeekChange">@(Model.CurrentWeekCo2SavedChange == 0 ? "..." : Model.CurrentWeekCo2SavedChange.ToString())</span>%
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row margin-top-10">
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                            <div class="dashboard-stat2">
+                                <div class="display">
+                                    <div class="number">
+                                        <h3 class="font-red-haze counterup" id="totalDeliveredEnergy">@(Model.TotalDeliveredEnergy == 0 ? "..." : Model.TotalDeliveredEnergy.ToString())</h3>
+                                        <small>Total Delivered Energy</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                            <div class="dashboard-stat2">
+                                <div class="display">
+                                    <div class="number">
+                                        <h3 class="font-red-haze counterup" id="totalChargeTime">@(Model.TotalChargeTime == 0 ? "..." : Model.TotalChargeTime.ToString())</h3>
+                                        <small>Total charge time</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                            <div class="dashboard-stat2">
+                                <div class="display">
+                                    <div class="number">
+                                        <h3 class="font-red-haze counterup" id="totalTransactions">@(Model.TotalTransactions == 0 ? "..." : Model.TotalTransactions.ToString())</h3>
+                                        <small>Total Transactions</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                            <div class="dashboard-stat2">
+                                <div class="display">
+                                    <div class="number">
+                                        <h3 class="font-red-haze counterup" id="totalCO2Saved">@(Model.TotalCo2Saved == 0 ? "..." : Model.TotalCo2Saved.ToString())</h3>
+                                        <small>Total Co2Saved</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+        </div>
+    </div>
+</div>

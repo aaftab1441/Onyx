@@ -1,0 +1,45 @@
+@using Sixoclock.Onyx.Web.Areas.App.Models.Common.Modals
+
+@using Sixoclock.Onyx.Web.Areas.App.Models.Installs
+@model CreateOrEditInstallViewModel
+
+@Html.Partial("~/Areas/App/Views/Common/Modals/_ModalHeader.cshtml", new ModalHeaderViewModel(L("CreateInstall")))
+
+<div class="modal-body">
+    <form role="form" novalidate class="form-validation">
+        <div class="form-group form-md-line-input form-md-floating-label no-hint">
+            <div class="form-group">
+                <input type="hidden" name="Id" value="@Model.Install.Id" />
+                <input type="hidden" name="TenantId" value="@Model.Install.TenantId" />
+                <input type="hidden" name="Latitude" value="@Model.Install.Latitude" />
+                <input type="hidden" name="Longitude" value="@Model.Install.Longitude" />
+                <label class="form-md-floating-label">@L("Name")</label>
+                <input class="form-control" type="text" name="InstallName" value="@Model.Install.InstallName" />
+            </div>
+        </div>
+
+        <div class="form-group form-md-line-input form-md-floating-label no-hint">
+            <div class="form-group">
+                <label class="form-md-floating-label">@L("Region")</label>
+                <select name="RegionId" class="form-control bs-select" required>
+                    <option value="0">@L("DropdownDefault")</option>
+                    @for (int i = 0; i < ViewBag.Regions.Items.Count; i++)
+                    {
+                        @if (Model.Install.RegionId == ViewBag.Regions.Items[i].Id)
+                        {
+
+                            <option value="@ViewBag.Regions.Items[i].Id" selected>@ViewBag.Regions.Items[i].Name</option>
+                        }
+                        else
+                        {
+                            <option value="@ViewBag.Regions.Items[i].Id">@ViewBag.Regions.Items[i].Name</option>
+                        }
+                    }
+                </select>
+            </div>       
+        </div>
+        
+    </form>
+</div>
+
+@Html.Partial("~/Areas/App/Views/Common/Modals/_ModalFooterWithSaveAndCancel.cshtml")

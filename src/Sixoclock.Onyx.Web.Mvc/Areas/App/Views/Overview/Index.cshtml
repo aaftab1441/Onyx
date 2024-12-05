@@ -1,0 +1,189 @@
+﻿@using Sixoclock.Onyx.Web.Areas.App.Startup
+
+@{
+    ViewBag.CurrentPageName = AppPageNames.Common.Overview;
+}
+
+@section Scripts
+    {
+    <environment names="Development">
+        <script src="~/view-resources/Areas/App/Views/Overviews/Index.js" asp-append-version="true"></script>
+        <script src="~/lib/highcharts/js/highcharts.js"></script>
+        <script src="~/lib/highcharts/js/highcharts-3d.js"></script>
+        <script src="~/lib/highcharts/js/highcharts-more.js"></script>
+        <script src="~/lib/highcharts/js/modules/exporting.js"></script>
+    </environment>
+    <environment names="Staging,Production">
+        <script src="~/view-resources/Areas/App/Views/Overviews/Index.min.js" asp-append-version="true"></script>
+        <script src="~/lib/highcharts/js/highcharts.min.js"></script>
+        <script src="~/lib/highcharts/js/highcharts-3d.min.js"></script>
+        <script src="~/lib/highcharts/js/highcharts-more.min.js"></script>
+        <script src="~/lib/highcharts/js/modules/exporting.min.js"></script>
+    </environment>
+}
+
+<div class="row margin-bottom-5">
+    <div class="col-xs-6">
+        <div class="page-head">
+            <div class="page-title">
+                <h1>
+                    <span>@L("UserOverview")</span>
+                </h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row margin-top-10">
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <div class="dashboard-stat2">
+            <div class="display">
+                <div class="number">
+                    <h3 class="font-red-haze counterup" id="energyThisWeek">...</h3>
+                    <small>Energy This Week</small>
+                </div>
+            </div>
+            <div class="progress-info">
+                <div class="progress">
+                    <span style="width: 85%;" class="progress-bar progress-bar-success blue-soft">
+                        <span class="sr-only">85% change</span>
+                    </span>
+                </div>
+                <div class="status">
+                    <div class="status-title">
+                        change
+                    </div>
+                    <div class="status-number">
+                        <span class="counterup" id="energyThisWeekChange"></span>%
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <div class="dashboard-stat2">
+            <div class="display">
+                <div class="number">
+                    <h3 class="font-red-haze counterup" id="chargeTimeThisWeek">...</h3>
+                    <small>Charge time this week</small>
+                </div>
+            </div>
+            <div class="progress-info">
+                <div class="progress">
+                    <span style="width: 85%;" class="progress-bar progress-bar-success blue-soft">
+                        <span class="sr-only">85% change</span>
+                    </span>
+                </div>
+                <div class="status">
+                    <div class="status-title">
+                        change
+                    </div>
+                    <div class="status-number">
+                        <span class="counterup" id="chargeTimeThisWeekChange"></span>%
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <div class="dashboard-stat2">
+            <div class="display">
+                <div class="number">
+                    <h3 class="font-red-haze counterup" id="transactionsThisWeek">...</h3>
+                    <small>Transactions This Week</small>
+                </div>
+            </div>
+            <div class="progress-info">
+                <div class="progress">
+                    <span style="width: 85%;" class="progress-bar progress-bar-success blue-soft">
+                        <span class="sr-only">85% change</span>
+                    </span>
+                </div>
+                <div class="status">
+                    <div class="status-title">
+                        change
+                    </div>
+                    <div class="status-number">
+                        <span class="counterup" id="transactionsThisWeekChange"></span>%
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <div class="dashboard-stat2">
+            <div class="display">
+                <div class="number">
+                    <h3 class="font-red-haze counterup" id="cO2SavedThisWeek">...</h3>
+                    <small>Co2saved this week</small>
+                </div>
+            </div>
+            <div class="progress-info">
+                <div class="progress">
+                    <span style="width: 85%;" class="progress-bar progress-bar-success blue-soft">
+                        <span class="sr-only">85% change</span>
+                    </span>
+                </div>
+                <div class="status">
+                    <div class="status-title">
+                        change
+                    </div>
+                    <div class="status-number">
+                        <span class="counterup" id="cO2SavedThisWeekChange"></span>%
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row margin-top-10">
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <div class="dashboard-stat2">
+            <div class="display">
+                <div class="number">
+                    <h3 class="font-red-haze counterup" id="totalDeliveredEnergy">...</h3>
+                    <small>Total Delivered Energy</small>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <div class="dashboard-stat2">
+            <div class="display">
+                <div class="number">
+                    <h3 class="font-red-haze counterup" id="totalChargeTime">...</h3>
+                    <small>Total charge time</small>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <div class="dashboard-stat2">
+            <div class="display">
+                <div class="number">
+                    <h3 class="font-red-haze counterup" id="totalTransactions">...</h3>
+                    <small>Total Transactions</small>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <div class="dashboard-stat2">
+            <div class="display">
+                <div class="number">
+                    <h3 class="font-red-haze counterup" id="totalCO2Saved">...</h3>
+                    <small>Total Co2Saved</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="portlet light margin-bottom-0">
+    <div class="portlet-body">
+        <div class="form">
+            <form class="horizontal-form" id="OtherOptionFilterForm">
+                <div id="container" style="height: 500px; margin: 0 auto"></div>
+            </form>
+        </div>
+    </div>
+</div>

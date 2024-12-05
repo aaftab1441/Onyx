@@ -1,0 +1,223 @@
+@using System.Threading.Tasks
+@using Sixoclock.Onyx.Authorization
+@using Sixoclock.Onyx.Web.Areas.App.Startup
+@using Sixoclock.Onyx.Web.Startup
+
+@model Sixoclock.Onyx.Web.Areas.App.Models.Installs.InstallsViewModel
+
+@{
+    ViewBag.CurrentPageName = AppPageNames.Common.Install;
+}
+
+@section Scripts
+{
+    <environment names="Development">
+        <script src="~/lib/highcharts/js/highcharts.js"></script>
+        <script src="~/lib/highcharts/js/highcharts-3d.js"></script>
+        <script src="~/lib/highcharts/js/highcharts-more.js"></script>
+        <script src="~/lib/highcharts/js/modules/exporting.js"></script>
+        <script src="~/view-resources/Areas/App/Views/Installs/_CreateOrEditModal.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/Installs/_Utilisation.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/Installs/Index.js" asp-append-version="true"></script>
+    </environment>
+<environment names="Staging,Production">
+    <script src="~/lib/highcharts/js/highcharts.min.js"></script>
+    <script src="~/lib/highcharts/js/highcharts-3d.min.js"></script>
+    <script src="~/lib/highcharts/js/highcharts-more.min.js"></script>
+    <script src="~/lib/highcharts/js/modules/exporting.min.js"></script>
+    <script src="~/view-resources/Areas/App/Views/Installs/_CreateOrEditModal.min.js" asp-append-version="true"></script>
+    <script src="~/view-resources/Areas/App/Views/Installs/_Utilisation.min.js" asp-append-version="true"></script>
+    <script src="~/view-resources/Areas/App/Views/Installs/Index.min.js" asp-append-version="true"></script>
+</environment>
+}
+
+<div class="row margin-top-10">
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <div class="dashboard-stat2">
+            <div class="display">
+                <div class="number">
+                    <h3 class="font-green-sharp">
+                        7800<small class="font-green-sharp"></small>
+                    </h3>
+                    <small>TOTAL CHARGERS</small>
+                </div>
+                <div class="icon">
+                    <i class="icon-pie-chart"></i>
+                </div>
+            </div>
+            <div class="progress-info">
+                <div class="progress">
+                    <span style="width: 5%;" class="progress-bar progress-bar-success green-sharp">
+                        <span class="sr-only">5% last month</span>
+                    </span>
+                </div>
+                <div class="status">
+                    <div class="status-title">
+                        progress
+                    </div>
+                    <div class="status-number">
+                        5%
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <div class="dashboard-stat2">
+            <div class="display">
+                <div class="number">
+                    <h3 class="font-red-haze">151,616</h3>
+                    <small>kWh delivered</small>
+                </div>
+                <div class="icon">
+                    <i class="icon-like"></i>
+                </div>
+            </div>
+            <div class="progress-info">
+                <div class="progress">
+                    <span style="width: 28%;" class="progress-bar progress-bar-success red-haze">
+                        <span class="sr-only" 28% increase last month></span>
+                    </span>
+                </div>
+                <div class="status">
+                    <div class="status-title">
+                        last month
+                    </div>
+                    <div class="status-number">
+                        28%
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <div class="dashboard-stat2">
+            <div class="display">
+                <div class="number">
+                    <h3 class="font-blue-sharp">567</h3>
+                    <small>NEW USERS</small>
+                </div>
+                <div class="icon">
+                    <i class="icon-basket"></i>
+                </div>
+            </div>
+            <div class="progress-info">
+                <div class="progress">
+                    <span style="width: 45%;" class="progress-bar progress-bar-success blue-sharp">
+                        <span class="sr-only">45% last month</span>
+                    </span>
+                </div>
+                <div class="status">
+                    <div class="status-title">
+                        last month
+                    </div>
+                    <div class="status-number">
+                        45%
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <div class="dashboard-stat2">
+            <div class="display">
+                <div class="number">
+                    <h3 class="font-purple-soft">36%</h3>
+                    <small>UTILIZATION</small>
+                </div>
+                <div class="icon">
+                    <i class="icon-user"></i>
+                </div>
+            </div>
+            <div class="progress-info">
+                <div class="progress">
+                    <span style="width: 57%;" class="progress-bar progress-bar-success purple-soft">
+                        <span class="sr-only">57% change</span>
+                    </span>
+                </div>
+                <div class="status">
+                    <div class="status-title">
+                        change
+                    </div>
+                    <div class="status-number">
+                        57%
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row margin-bottom-5">
+    <div class="col-xs-6">
+        <div class="page-head">
+            <div class="page-title">
+                <h1>
+                    <span>@L("Installs")</span> <small>@L("InstallsHeaderInfo")</small>
+                </h1>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-6 text-right">
+        <button id="CreateNewInstallButton" class="btn btn-primary blue"><i class="fa fa-plus"></i> @L("CreateNewInstall")</button>
+    </div>
+</div>
+<div class="portlet light margin-bottom-0">
+    <div class="portlet-body">
+        <div class="form">
+            <form class="horizontal-form" id="InstallFilterForm">
+                <div class="form-body">
+                    <div class="row margin-bottom-10">
+                        <div class="col-md-12">
+                            <div class="inputs inputs-full-width">
+                                <div class="portlet-input">
+                                    <div class="input-group">
+                                        <input id="InstallsTableFilter" class="form-control" placeholder="@L("SearchWithThreeDot")" type="text" />
+                                        <span class="input-group-btn">
+                                            <button id="GetInstallsButton" class="btn default" type="submit"><i class="icon-magnifier"></i></button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="InstallFiltersArea" style="display: none">
+                        <div class="row margin-bottom-10">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input class="form-control" id="installName" placeholder="@L("FilterByInstallName")" type="text" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input class="form-control" id="regionName" type="text" placeholder="@L("FilterByRegion")" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row margin-bottom-10">
+                            <div class="col-sm-12 text-right">
+                                <button id="RefreshInstallListButton" class="btn blue"><i class="fa fa-refresh"></i> @L("Refresh")</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row margin-bottom-10">
+                    <div class="col-sm-12">
+                        <span id="ShowAdvancedFiltersSpan" class="clickable-item text-muted"><i class="fa fa-angle-down"></i> @L("ShowAdvancedFilters")</span>
+                        <span id="HideAdvancedFiltersSpan" class="clickable-item text-muted" style="display: none"><i class="fa fa-angle-up"></i> @L("HideAdvancedFilters")</span>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <table id="InstallsTable" class="display table table-striped table-bordered table-hover dt-responsive nowrap">
+            <thead>
+                <tr>
+                    <th>@L("Actions")</th>
+                    <th>@L("InstallName")</th>
+                    <th>@L("RegionName")</th>
+                    <th>@L("CreationTime")</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>

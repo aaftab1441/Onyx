@@ -1,0 +1,42 @@
+﻿@using Abp.Extensions
+@using Sixoclock.Onyx.Web.Areas.App.Models.Common.Modals
+@using Sixoclock.Onyx.Web.Areas.App.Models.Services
+@model Sixoclock.Onyx.Web.Areas.App.Models.Services.CreateOrEditServicesModalViewModel
+
+@Html.Partial("~/Areas/App/Views/Common/Modals/_ModalHeader.cshtml", new ModalHeaderViewModel(Model.IsEditMode ? (L("EditService") + ": " + Model.Service.Name) : L("CreateService")))
+
+<div class="modal-body">
+    <div>
+        <div>
+            <form name="ServiceForm" role="form" novalidate class="form-validation">
+
+                @if (Model.IsEditMode)
+                {
+                    <input type="hidden" name="Id" value="@Model.Service.Id" />
+                }
+
+                <div class="form-group form-md-line-input form-md-floating-label no-hint">
+                    <div class="form-group">
+                        <label class="form-md-floating-label">@L("Name")</label>
+                        <input class="form-control" type="text" name="Name" value="@Model.Service.Name" required>
+                       
+                    </div>
+                    <div>
+                        <label class="form-md-floating-label">@L("FeatureName")</label>
+                        <select class="form-control" id="RuleStartRelationId" name="FeatureName">
+                            @foreach (var feature in Model.Features)
+                            {
+                                <option value="@feature.Value" selected="@(Model.Service.FeatureName != null && Model.Service.FeatureName == feature.Value)">@feature.DisplayText</option>
+                            }
+                        </select>
+                      
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+</div>
+
+@Html.Partial("~/Areas/App/Views/Common/Modals/_ModalFooterWithSaveAndCancel.cshtml")

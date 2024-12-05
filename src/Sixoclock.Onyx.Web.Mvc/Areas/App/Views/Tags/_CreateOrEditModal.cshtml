@@ -1,0 +1,175 @@
+@using Sixoclock.Onyx.Web.Areas.App.Models.Common.Modals
+
+@using Sixoclock.Onyx.Web.Areas.App.Models.Tags
+@model CreateOrEditTagViewModel
+
+@Html.Partial("~/Areas/App/Views/Common/Modals/_ModalHeader.cshtml", new ModalHeaderViewModel(L("CreateTag")))
+
+<div class="modal-body">
+    <form role="form" novalidate class="form-validation">
+        <div class="col-sm-12">
+            <input type="hidden" name="Id" value="@Model.Tag.Id" />
+            <input type="hidden" name="TenantId" value="@Model.Tag.TenantId" />
+            
+            <label class="control-label col-sm-6">Search User for Tag</label>
+            <input class="form-control" size="16" type="text" id="txtUser" />
+            <div id="UserInfo"></div>
+
+            <input type="hidden" name="UserId" id="UserId" value="@Model.Tag.UserId" />
+        </div>
+        <div class="col-sm-12">
+            <label class="control-label col-sm-6">Expiry</label>
+            <input class="form-control date-picker" name="Expiry" size="16" type="text" value="@Model.Tag.Expiry" id="datetimepicker" />
+        </div>
+        <div class="col-sm-12">
+            <label class="control-label col-sm-6">Select ParentTag for the Tag</label>
+            <select class="form-control bs-select" name="ParentTagId" required>
+                <option value="0">@L("DropdownDefault")</option>
+
+                @for (int i = 0; i < ViewBag.ParentTags.Items.Count; i++)
+                {
+                    @if (Model.Tag.ParentTagId == ViewBag.ParentTags.Items[i].Id)
+                    {
+
+                        <option value="@ViewBag.ParentTags.Items[i].Id" selected>@ViewBag.ParentTags.Items[i].Value</option>
+                    }
+                    else
+                    {
+                        <option value="@ViewBag.ParentTags.Items[i].Id">@ViewBag.ParentTags.Items[i].Value</option>
+                    }
+
+                }
+            </select>
+        </div>
+        <div class="col-sm-12">
+            <label class="control-label col-sm-6">Select Customer for the Tag</label>
+            <select class="form-control bs-select">
+                <option value="0">@L("DropdownDefault")</option>
+
+                @for (int i = 0; i < ViewBag.Customers.Items.Count; i++)
+                {
+                    @if (Model.Tag.CustomerId == ViewBag.Customers.Items[i].Id)
+                    {
+
+                        <option value="@ViewBag.Customers.Items[i].Id" selected>@ViewBag.Customers.Items[i].Name</option>
+                    }
+                    else
+                    {
+                        <option value="@ViewBag.Customers.Items[i].Id">@ViewBag.Customers.Items[i].Name</option>
+                    }
+
+                }
+            </select>
+        </div>
+        <div class="col-sm-12">
+            <label class="control-label col-sm-6">Select Market for the Tag</label>
+            <select class="form-control bs-select">
+                <option value="0">@L("DropdownDefault")</option>
+
+                @for (int i = 0; i < ViewBag.Markets.Items.Count; i++)
+                {
+                    @if (Model.Tag.MarketId == ViewBag.Markets.Items[i].Id)
+                    {
+
+                        <option value="@ViewBag.Markets.Items[i].Id" selected>@ViewBag.Markets.Items[i].Name</option>
+                    }
+                    else
+                    {
+                        <option value="@ViewBag.Markets.Items[i].Id">@ViewBag.Markets.Items[i].Name</option>
+                    }
+
+                }
+            </select>
+        </div>
+        <div class="col-sm-12">
+            <label class="control-label col-sm-6">Select Region for the Tag</label>
+            <select class="form-control bs-select">
+                <option value="0">@L("DropdownDefault")</option>
+
+                @for (int i = 0; i < ViewBag.Regions.Items.Count; i++)
+                {
+                    @if (Model.Tag.RegionId == ViewBag.Regions.Items[i].Id)
+                    {
+
+                        <option value="@ViewBag.Regions.Items[i].Id" selected>@ViewBag.Regions.Items[i].Name</option>
+                    }
+                    else
+                    {
+                        <option value="@ViewBag.Regions.Items[i].Id">@ViewBag.Regions.Items[i].Name</option>
+                    }
+
+                }
+            </select>
+        </div>
+        <div class="col-sm-12">
+            <label class="control-label col-sm-6">Select Installation for the Tag</label>
+            <select class="form-control bs-select">
+                <option value="0">@L("DropdownDefault")</option>
+
+                @for (int i = 0; i < ViewBag.Installations.Items.Count; i++)
+                {
+                    @if (Model.Tag.InstallId == ViewBag.Installations.Items[i].Id)
+                    {
+
+                        <option value="@ViewBag.Installations.Items[i].Id" selected>@ViewBag.Installations.Items[i].Name</option>
+                    }
+                    else
+                    {
+                        <option value="@ViewBag.Installations.Items[i].Id">@ViewBag.Installations.Items[i].Name</option>
+                    }
+
+                }
+            </select>
+        </div>
+        <div class="col-sm-12">
+            <label class="control-label col-sm-6">Select Group for the Tag</label>
+            <select class="form-control bs-select">
+                <option value="0">@L("DropdownDefault")</option>
+
+                @for (int i = 0; i < ViewBag.Groups.Items.Count; i++)
+                {
+                    @if (Model.Tag.GroupId == ViewBag.Groups.Items[i].Id)
+                    {
+
+                        <option value="@ViewBag.Groups.Items[i].Id" selected>@ViewBag.Groups.Items[i].Name</option>
+                    }
+                    else
+                    {
+                        <option value="@ViewBag.Groups.Items[i].Id">@ViewBag.Groups.Items[i].Name</option>
+                    }
+
+                }
+            </select>
+        </div>
+        <div class="col-sm-12">
+            <label class="control-label col-sm-6">Select Authorization Status for the Tag</label>
+            <select class="form-control bs-select" name="AuthorizationStatusId" required>
+                <option value="0">@L("DropdownDefault")</option>
+
+                @for (int i = 0; i < ViewBag.AuthorizationStatuses.Items.Count; i++)
+                {
+                    @if (Model.Tag.AuthorizationStatusId == ViewBag.AuthorizationStatuses.Items[i].Id)
+                    {
+
+                        <option value="@ViewBag.AuthorizationStatuses.Items[i].Id" selected>@ViewBag.AuthorizationStatuses.Items[i].Name</option>
+                    }
+                    else
+                    {
+                        <option value="@ViewBag.AuthorizationStatuses.Items[i].Id">@ViewBag.AuthorizationStatuses.Items[i].Name</option>
+                    }
+
+                }
+            </select>
+        </div>
+        <div class="col-sm-12">
+            <label class="control-label col-sm-4">@L("IdToken")</label>
+            <input class="form-control" type="text" name="IdToken" value="@Model.Tag.IdToken" required>
+        </div>
+        <div class="col-sm-12">
+            <label class="control-label col-sm-4">@L("Comment")</label>
+            <input class="form-control" type="text" name="Comment" value="@Model.Tag.Comment" required>
+        </div>
+    </form>
+</div>
+
+@Html.Partial("~/Areas/App/Views/Common/Modals/_ModalFooterWithSaveAndCancel.cshtml")

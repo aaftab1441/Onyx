@@ -1,0 +1,554 @@
+@using Sixoclock.Onyx.Web.Areas.App.Models.Common.Modals
+
+@using Sixoclock.Onyx.Web.Areas.App.Models.Chargepoints
+@model CreateOrEditChargepointViewModel
+
+<div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+            <h4 class="modal-title">
+                <span></span>
+            </h4>
+        </div>
+        <div class="modal-body">
+            <div class="tabbable-line">
+                <ul class="nav nav-tabs ">
+                    <li class="active">
+                        <a href="#Status" data-toggle="tab" aria-expanded="true">
+                            @L("Status")
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="#Reset" data-toggle="tab" aria-expanded="false">
+                            @L("Reset")
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="#Cache" data-toggle="tab" aria-expanded="false">
+                            @L("Cache")
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="#RemoteStart" data-toggle="tab" aria-expanded="false">
+                            @L("RemoteStart")
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="#RemoteStop" data-toggle="tab" aria-expanded="false">
+                            @L("RemoteStop")
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="#Availability" data-toggle="tab" aria-expanded="false">
+                            @L("Availability")
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="#Unlock" data-toggle="tab" aria-expanded="false">
+                            @L("Unlock")
+                        </a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="Status">
+                        <table class="table-advance">
+                            <tr>
+                                <td class="col-sm-4">
+                                    <div class="form-group">
+                                        <label>Model : @Model.Chargepoint.ModelName</label>
+                                    </div>
+                                </td>
+                                <td class="col-sm-4">
+                                    <div class="form-group">
+                                        <label>Vendor : @Model.Chargepoint.VendorName</label>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                        <div class="dataTables_wrapper no-footer">
+                            <table class="display table table-striped table-bordered table-hover dt-responsive nowrap dataTable no-footer dtr-inline">
+                                <thead>
+                                    <tr>
+                                        <th class="sorting">
+                                            EVSE
+                                        </th>
+                                        <th class="sorting">
+                                            Status
+                                        </th>
+                                        <th class="sorting">
+                                            Availability
+                                        </th>
+                                </thead>
+                                <tbody>
+                                    @foreach (var evse in Model.Chargepoint.EVSEs)
+                                    {
+
+                                        <tr>
+                                            <td>@evse.EVSE_id</td>
+                                            <td>@evse.AvailabilityType</td>
+                                            <td>@evse.EVSEStatus</td>
+                                        </tr>
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="Reset">
+                        <table class="table-advance">
+                            <tr>
+                                <td class="col-sm-4">
+                                    <div class="form-group">
+                                        <label>Model : @Model.Chargepoint.ModelName</label>
+                                    </div>
+                                </td>
+                                <td class="col-sm-4">
+                                    <div class="form-group">
+                                        <label>Vendor : @Model.Chargepoint.VendorName</label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-sm-4">
+                                    <div class="form-group">
+                                        <label>Select Reset Type</label>
+                                        <select name="ResetTypeId" id="ResetTypeId" class="form-control bs-select" required>
+                                            <option value="0">@L("DropdownDefault")</option>
+                                            @for (int i = 0; i < ViewBag.ResetTypes.Items.Count; i++)
+                                            {
+                                                <option value="@ViewBag.ResetTypes.Items[i].Id">@ViewBag.ResetTypes.Items[i].Name</option>
+                                            }
+                                        </select>
+                                    </div>
+                                </td>
+                                <td class="col-sm-4">
+                                    <div class="form-group">
+                                        <input type="hidden" id="Id" value="@Model.Chargepoint.Id" />
+                                        <input type="button" class="btn default" value="Reset" id="btnReset" />
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                        <div class="dataTables_wrapper no-footer">
+                            <table class="display table table-striped table-bordered table-hover dt-responsive nowrap dataTable no-footer dtr-inline">
+                                <thead>
+                                    <tr>
+                                        <th class="sorting">
+                                            Message
+                                        </th>
+                                        <th class="sorting">
+                                            Type
+                                        </th>
+                                        <th class="sorting">
+                                            Status
+                                        </th>
+                                        <th class="sorting">
+                                            Date
+                                        </th>
+                                </thead>
+                                <tbody>
+                                    @foreach (var resetEvent in Model.Chargepoint.ResetEvents)
+                                    {
+
+                                        <tr>
+                                            <td>@resetEvent.MessageEventResponse</td>
+                                            <td>@resetEvent.ResetType</td>
+                                            <td>@resetEvent.ResetStatusValue</td>
+                                            <td>@resetEvent.Date</td>
+                                        </tr>
+                                    }
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                    </div>
+                    <div class="tab-pane" id="Cache">
+                        <table class="table-advance">
+                            <tr>
+                                <td class="col-sm-4">
+                                    <div class="form-group">
+                                        <label>Model : @Model.Chargepoint.ModelName</label>
+                                    </div>
+                                </td>
+                                <td class="col-sm-4">
+                                    <div class="form-group">
+                                        <label>Vendor : @Model.Chargepoint.VendorName</label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-sm-4">
+                                    <div class="form-group">
+                                        <input type="button" class="btn default" value="Clear Cache" onclick="clearCache()" />
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                        <p>Clear cache events</p>
+                        <div class="dataTables_wrapper no-footer">
+                            <table class="display table table-striped table-bordered table-hover dt-responsive nowrap dataTable no-footer dtr-inline">
+                                <thead>
+                                    <tr>
+                                        <th class="sorting">
+                                            Date
+                                        </th>
+                                        <th class="sorting">
+                                            Message
+                                        </th>
+                                        <th class="sorting">
+                                            Status
+                                        </th>
+                                </thead>
+                                <tbody id="UnlockEventsTable">
+                                    @foreach (var cache in Model.Chargepoint.ClearCacheEvents)
+                                    {
+                                        <tr>
+                                            <td>@cache.Date</td>
+                                            <td>@cache.MessageEventResponse</td>
+                                            <td>@cache.ClearCacheStatusValue</td>
+                                        </tr>
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="RemoteStart">
+                        <table class="table-advance">
+                            <tr>
+                                <td class="col-sm-4">
+                                    <div class="form-group">
+                                        <label>Model : @Model.Chargepoint.ModelName</label>
+                                    </div>
+                                </td>
+                                <td class="col-sm-4">
+                                    <div class="form-group">
+                                        <label>Vendor : @Model.Chargepoint.VendorName</label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-sm-4" colspan="2">
+                                    <div class="form-group">
+                                        <label>Search user tag to start or stop transacion</label>
+                                        <input type="text" class="form-control" placeholder="search idToken in Tag" id="txtIdToken" />
+                                        <input type="hidden" id="TagId" />
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-sm-4" colspan="2">
+                                    <div class="form-group">
+                                        <input type="button" class="btn default" value="Search" onclick="searchUsers()" />
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-sm-4" colspan="2">
+                                    <div class="form-group">
+                                        <div id="UserInfo"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-sm-4" colspan="2">
+                                    <div class="form-group">
+                                        <label>Select EVSE</label>
+                                        <select name="EVSEId" id="EVSEId" class="form-control bs-select" required>
+                                            <option value="0">@L("DropdownDefault")</option>
+                                            @for (int i = 0; i < ViewBag.EVSEs.Items.Count; i++)
+                                            {
+                                                <option value="@ViewBag.EVSEs.Items[i].Id">@ViewBag.EVSEs.Items[i].EVSE_id</option>
+                                            }
+                                        </select>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-sm-4" colspan="2">
+                                    <div class="form-group">
+                                        <label id="evseStatus">
+                                            Availability :
+                                        </label>
+                                        <input type="hidden" id="AvailabilityType" />
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-sm-4" colspan="2">
+                                    <div class="form-group">
+                                        <label id="evseAvailability">
+                                            Status :
+                                        </label>
+                                        <input type="hidden" id="EVSEStatus" />
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-sm-4" colspan="2">
+                                    <div class="form-group">
+                                        <input type="button" class="btn default" value="Start" onclick="startCharging()" />
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                        <div class="dataTables_wrapper no-footer">
+                            <table class="display table table-striped table-bordered table-hover dt-responsive nowrap dataTable no-footer dtr-inline">
+                                <thead>
+                                    <tr>
+                                        <th class="sorting">
+                                            Message
+                                        </th>
+                                        <th class="sorting">
+                                            EVSE
+                                        </th>
+                                        <th class="sorting">
+                                            Type
+                                        </th>
+                                        <th class="sorting">
+                                            Status
+                                        </th>
+                                        <th class="sorting">
+                                            Date
+                                        </th>
+                                </thead>
+                                <tbody id="remoteStartStopEventsTable">
+                                    @foreach (var remoteEvent in Model.Chargepoint.RemoteStartStopEvents)
+                                    {
+                                        <tr>
+                                            <td>@remoteEvent.MessageEventResponse</td>
+                                            <td>@remoteEvent.EVSE_id</td>
+                                            <td>@remoteEvent.EventType</td>
+                                            <td>@remoteEvent.StatusValue</td>
+                                            <td>@remoteEvent.CreationTime</td>
+                                        </tr>
+                                    }
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="RemoteStop">
+                        <table class="table-advance">
+                            <tr>
+                                <td class="col-sm-2">
+                                    <div class="form-group">
+                                        <label>Model : @Model.Chargepoint.ModelName</label>
+                                    </div>
+                                </td>
+                                <td class="col-sm-2">
+                                    <div class="form-group">
+                                        <label>Vendor : @Model.Chargepoint.VendorName</label>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                        <table id="TransactionsTable" class="display table table-striped table-bordered table-hover dt-responsive nowrap">
+                            <thead>
+                                <tr>
+                                    <th style="width:7%">@L("Actions")</th>
+                                    <th style="width:7%">@L("StartTime")</th>
+                                    <th style="width:7%">@L("EVSE")</th>
+                                    <th style="width:7%">@L("Status")</th>
+                                    <th style="width:7%">@L("Type")</th>
+                                    <th style="width:7%">@L("Reason")</th>
+                                    <th style="width:7%">@L("MeterType")</th>
+                                    <th style="width:7%">@L("UserName")</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                    <div class="tab-pane" id="Availability">
+                        <table class="table-advance">
+                            <tr>
+                                <td class="col-sm-4">
+                                    <div class="form-group">
+                                        <label>Model : @Model.Chargepoint.ModelName</label>
+                                    </div>
+                                </td>
+                                <td class="col-sm-4">
+                                    <div class="form-group">
+                                        <label>Vendor : @Model.Chargepoint.VendorName</label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-sm-4" colspan="2">
+                                    <label>Select EVSE</label>
+                                    <div class="form-group">
+                                        <select name="AvailabilityTabEVSEId" id="AvailabilityTabEVSEId" class="form-control bs-select" required>
+                                            <option value="0">@L("DropdownDefault")</option>
+                                            @for (int i = 0; i < ViewBag.EVSEs.Items.Count; i++)
+                                            {
+                                                <option value="@ViewBag.EVSEs.Items[i].Id">@ViewBag.EVSEs.Items[i].EVSE_id</option>
+                                            }
+                                        </select>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-sm-4" colspan="2">
+                                    <div class="form-group">
+                                        <label id="AvailabilityTabEvseStatus">
+                                            Availability :
+                                        </label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-sm-4" colspan="2">
+                                    <div class="form-group">
+                                        <label id="AvailabilityTabEvseAvailability">
+                                            Status :
+                                        </label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-sm-4">
+                                    <div class="form-group">
+                                        <label>Select Availability</label>
+                                        <select name="AvailabilityTypeId" id="AvailabilityTypeId" class="form-control bs-select" required>
+                                            <option value="0">@L("DropdownDefault")</option>
+                                            @for (int i = 0; i < ViewBag.AvailabilityTypes.Items.Count; i++)
+                                            {
+                                                <option value="@ViewBag.AvailabilityTypes.Items[i].Id">@ViewBag.AvailabilityTypes.Items[i].Name</option>
+                                            }
+                                        </select>
+                                    </div>
+                                </td>
+                                <td class="col-sm-4">
+                                    <div class="form-group">
+                                        <input type="button" class="btn default" value="Update" onclick="updateEvseAvailability()" />
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                        <div class="dataTables_wrapper no-footer">
+                            <table class="display table table-striped table-bordered table-hover dt-responsive nowrap dataTable no-footer dtr-inline">
+                                <thead>
+                                    <tr>
+                                        <th class="sorting">
+                                            EVSE
+                                        </th>
+                                        <th class="sorting">
+                                            Status
+                                        </th>
+                                        <th class="sorting">
+                                            Availability
+                                        </th>
+                                </thead>
+                                <tbody>
+                                    @foreach (var evse in Model.Chargepoint.EVSEs)
+                                    {
+
+                                        <tr>
+                                            <td>@evse.EVSE_id</td>
+                                            <td>@evse.AvailabilityType</td>
+                                            <td>@evse.EVSEStatus</td>
+                                        </tr>
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="Unlock">
+                        <table class="table-advance">
+                            <tr>
+                                <td class="col-sm-4">
+                                    <div class="form-group">
+                                        <label>Model : @Model.Chargepoint.ModelName</label>
+                                    </div>
+                                </td>
+                                <td class="col-sm-4">
+                                    <div class="form-group">
+                                        <label>Vendor : @Model.Chargepoint.VendorName</label>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="col-sm-4" colspan="2">
+                                    <label>Select EVSE</label>
+                                    <div class="form-group">
+                                        <select name="UnlockTabEVSEId" id="UnlockTabEVSEId" class="form-control bs-select" required>
+                                            <option value="0">@L("DropdownDefault")</option>
+                                            @for (int i = 0; i < ViewBag.EVSEs.Items.Count; i++)
+                                            {
+                                                <option value="@ViewBag.EVSEs.Items[i].Id">@ViewBag.EVSEs.Items[i].EVSE_id</option>
+                                            }
+                                        </select>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-sm-4" colspan="2">
+                                    <div class="form-group">
+                                        <label id="UnlockTabEvseStatus">
+                                            Availability :
+                                        </label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-sm-4" colspan="2">
+                                    <div class="form-group">
+                                        <label id="UnlockTabEvseAvailability">
+                                            Status :
+                                        </label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-sm-4">
+                                    <div class="form-group">
+                                        <input type="button" class="btn default" value="Unlock" onclick="unlockEVSE()" />
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                        <p>Unlock Events</p>
+                        <div class="dataTables_wrapper no-footer">
+                            <table class="display table table-striped table-bordered table-hover dt-responsive nowrap dataTable no-footer dtr-inline">
+                                <thead>
+                                    <tr>
+                                        <th class="sorting">
+                                            Date
+                                        </th>
+                                        <th class="sorting">
+                                            Message
+                                        </th>
+                                        <th class="sorting">
+                                            EVSE
+                                        </th>
+                                        <th class="sorting">
+                                            Status
+                                        </th>
+                                </thead>
+                                <tbody id="UnlockEventsTable">
+                                    @foreach (var evse in Model.Chargepoint.UnlockEvents)
+                                    {
+
+                                        <tr>
+                                            <td>@evse.Date</td>
+                                            <td>@evse.MessageEventResponse</td>
+                                            <td>@evse.EVSE_Id</td>
+                                            <td>@evse.UnlockStatusValue</td>
+                                        </tr>
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn default close-button" data-dismiss="modal"><i class="fa fa-close"></i> <span>@L("Close")</span></button>
+        </div>
+    </div>
+</div>

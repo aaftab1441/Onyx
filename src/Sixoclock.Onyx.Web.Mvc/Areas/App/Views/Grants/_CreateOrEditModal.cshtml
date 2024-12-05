@@ -1,0 +1,31 @@
+﻿@using Abp.Extensions
+@using Sixoclock.Onyx.Web.Areas.App.Models.Common.Modals
+@using Sixoclock.Onyx.Web.Areas.App.Models.Grants
+@model Sixoclock.Onyx.Web.Areas.App.Models.Grants.CreateOrEditGrantModalViewModel
+
+@Html.Partial("~/Areas/App/Views/Common/Modals/_ModalHeader.cshtml", new ModalHeaderViewModel(Model.IsEditMode ? (L("Edit_RuleSet") + ": " + Model.RuleSet.Name) : L("Create_NewRuleSet")))
+
+<div class="modal-body">
+    <div>
+        <div>
+            <form name="RuleSetForm" role="form" novalidate class="form-validation">
+
+                @if (Model.IsEditMode)
+                {
+                    <input type="hidden" name="Id" value="@Model.RuleSet.Id" />
+                }
+
+                <div class="form-group form-md-line-input form-md-floating-label no-hint">
+                    <div class="form-group">
+                        <label class="form-md-floating-label">@L("Name")</label>
+                        <input class="form-control" type="text" name="Name" value="@Model.RuleSet.Name" required>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+</div>
+
+@Html.Partial("~/Areas/App/Views/Common/Modals/_ModalFooterWithSaveAndCancel.cshtml")

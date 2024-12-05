@@ -1,0 +1,32 @@
+@using Sixoclock.Onyx.Web.Areas.App.Models.Common.Modals
+
+@using Sixoclock.Onyx.Web.Areas.App.Models.ModelOCPPConfigs
+@model EditModelKeyValueViewModel
+
+<div class="modal-body">
+    <form role="form" novalidate class="form-validation">
+        <div class="form-group form-md-line-input form-md-floating-label no-hint">
+            <input type="hidden" name="Id" value="@Model.ModelKeyValue.Id" />
+            <input type="hidden" name="ChargepointModelId" value="@Model.ModelKeyValue.ChargepointModelId" />
+            <input type="hidden" name="TenantId" value="@Model.ModelKeyValue.TenantId" />
+            <input type="hidden" name="OCPPFeatureId" value="@Model.ModelKeyValue.OCPPFeatureId" />
+            <input type="hidden" name="KeyValueId" value="@Model.ModelKeyValue.KeyValueId" />
+            <input type="hidden" name="Key" value="@Model.ModelKeyValue.Key" />
+            <input type="hidden" name="FeatureName" value="@Model.ModelKeyValue.FeatureName" />
+            <input type="hidden" name="RW" value="@Model.ModelKeyValue.RW" />
+            <div class="form-group">
+                <label class="form-md-floating-label">@L("ModelValue")</label>
+                <input class="form-control" type="text" name="ModelValue" value="@Model.ModelKeyValue.ModelValue" required>
+            </div>
+        </div>
+
+        <div class="form-group form-md-line-input form-md-floating-label no-hint">
+            <div class="form-group">
+                <label class="form-md-floating-label">@L("Comment")</label>
+                <input class="form-control" type="text" name="Comment" value="@Model.ModelKeyValue.Comment" required>
+            </div>
+        </div>
+    </form>
+</div>
+
+@Html.Partial("~/Areas/App/Views/Common/Modals/_ModalFooterWithSaveAndCancel.cshtml")

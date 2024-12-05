@@ -1,0 +1,44 @@
+@using Sixoclock.Onyx.Web.Areas.App.Models.Common.Modals
+
+@using Sixoclock.Onyx.Web.Areas.App.Models.Regions
+@model CreateOrEditRegionViewModel
+
+@Html.Partial("~/Areas/App/Views/Common/Modals/_ModalHeader.cshtml", new ModalHeaderViewModel(L("CreateRegion")))
+
+<div class="modal-body">
+    <form role="form" novalidate class="form-validation">
+        <div class="form-group form-md-line-input form-md-floating-label no-hint">
+            <div class="form-group">
+                <input type="hidden" name="Id" value="@Model.Region.Id" />
+                <input type="hidden" name="TenantId" value="@Model.Region.TenantId" />
+                <label class="form-md-floating-label">@L("Name")</label>
+                <input class="form-control" type="text" name="RegionName" value="@Model.Region.RegionName" required>
+            </div>
+        </div>
+
+        <div class="form-group form-md-line-input form-md-floating-label no-hint">
+            <div class="form-group">
+                <label class="form-md-floating-label">@L("Country")</label>
+                <select name="MarketId" class="form-control bs-select" required>
+                    <option value="0">@L("DropdownDefault")</option>
+                    @for (int i = 0; i < ViewBag.Markets.Items.Count; i++)
+                    {
+                        @if (Model.Region.MarketId == ViewBag.Markets.Items[i].Id)
+                        {
+
+                            <option value="@ViewBag.Markets.Items[i].Id" selected>@ViewBag.Markets.Items[i].Name</option>
+                        }
+                        else
+                        {
+                            <option value="@ViewBag.Markets.Items[i].Id">@ViewBag.Markets.Items[i].Name</option>
+                        }
+
+                    }
+                </select>
+            </div>
+            
+        </div>
+    </form>
+</div>
+
+@Html.Partial("~/Areas/App/Views/Common/Modals/_ModalFooterWithSaveAndCancel.cshtml")

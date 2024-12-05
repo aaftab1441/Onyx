@@ -1,0 +1,86 @@
+﻿@using System.Threading.Tasks
+@using Abp.Application.Services.Dto
+@using Sixoclock.Onyx.Authorization
+@using Sixoclock.Onyx.Web.Areas.App.Startup
+@using Sixoclock.Onyx.Web.Startup
+@{
+    ViewBag.CurrentPageName = AppPageNames.Common.Bills;
+}
+@section Styles
+    {
+    <environment names="Development">
+        <link rel="stylesheet" href="~/view-resources/Areas/App/Views/Bills/Index.css" asp-append-version="true" />
+    </environment>
+
+    <environment names="Staging,Production">
+        <link rel="stylesheet" href="~/view-resources/Areas/App/Views/Bills/Index.min.css" asp-append-version="true" />
+    </environment>
+}
+@section Scripts
+    {
+    <environment names="Development">
+       
+        <script src="~/view-resources/Areas/App/Views/bills/Index.js" asp-append-version="true"></script>
+      
+    </environment>
+    <environment names="Staging,Production">
+    <script src="~/view-resources/Areas/App/Views/Bills/Index.min.js" asp-append-version="true"></script>
+    
+    </environment>
+}
+<div class="row margin-bottom-5">
+    <div class="col-xs-6">
+        <div class="page-head">
+            <div class="page-title">
+                <h1>
+                    <span>@L("Bills")</span> <small>@L("BillsHeaderInfo")</small>
+                </h1>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-6 text-right">
+        <button id="ExportUsersToExcelButton" class="btn green-haze"><i class="fa fa-file-excel-o"></i> @L("ExportToExcel")</button>
+        @* @if (IsGranted(AppPermissions.Pages_Grants_Create))
+            {
+                <button id="CreateNewGrantButton" class="btn btn-primary blue"><i class="fa fa-plus"></i> @L("Create_NewRuleSet")</button>
+            }
+        </div>*@
+    </div>
+</div>
+
+<div class="portlet light margin-bottom-0">
+    <div class="portlet-title portlet-title-filter">
+        <div class="inputs inputs-full-width">
+            <div class="portlet-input">
+                <form>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <div class="form-group">
+                                <button id="RefreshBillsButton" class="btn btn-primary blue"><i class="fa fa-refresh"></i> @L("Refresh")</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="portlet-body">
+        <table id="BillsTable" class="display table table-striped table-bordered table-hover dt-responsive nowrap">
+            <thead>
+                <tr>
+                    <th>@L("Actions")</th>
+                    <th>@L("Number")</th>
+                    <th>@L("Status")</th>
+                    <th>@L("Type")</th>
+                    <th>@L("Totalkwh")</th>
+                    <th>@L("Transactions")</th>
+                    <th>@L("Comment")</th>
+                    <th>@L("Date")</th>
+                    <th>@L("DueDate")</th>
+
+                    
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>

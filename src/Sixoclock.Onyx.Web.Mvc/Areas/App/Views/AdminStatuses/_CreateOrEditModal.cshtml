@@ -1,0 +1,28 @@
+@using Sixoclock.Onyx.Web.Areas.App.Models.Common.Modals
+
+@using Sixoclock.Onyx.Web.Areas.App.Models.AdminStatuses
+@model CreateOrEditAdminStatusViewModel
+
+@Html.Partial("~/Areas/App/Views/Common/Modals/_ModalHeader.cshtml", new ModalHeaderViewModel(L("CreateAdminStatus")))
+
+<div class="modal-body">
+    <form role="form" novalidate class="form-validation">
+        <div class="form-group form-md-line-input form-md-floating-label no-hint">
+            <input type="hidden" name="Id" value="@Model.AdminStatus.Id" />
+            <input type="hidden" name="TenantId" value="@Model.AdminStatus.TenantId" />
+            <div class="form-group">
+                <label class="form-md-floating-label">@L("Status")</label>
+                <input class="form-control" type="text" name="Status" value="@Model.AdminStatus.Status" required>
+            </div>
+        </div>
+
+        <div class="form-group form-md-line-input form-md-floating-label no-hint">
+            <div class="form-group">
+                <label class="form-md-floating-label">@L("Comment")</label>
+                <input class="form-control" type="text" name="Comment" value="@Model.AdminStatus.Comment" required>
+            </div>
+        </div>
+    </form>
+</div>
+
+@Html.Partial("~/Areas/App/Views/Common/Modals/_ModalFooterWithSaveAndCancel.cshtml")

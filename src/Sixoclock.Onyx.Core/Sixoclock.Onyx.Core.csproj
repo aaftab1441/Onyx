@@ -1,0 +1,58 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\..\common.props">
+  </Import>
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <AssetTargetFallback>$(AssetTargetFallback);portable-net45+win8+wp8+wpa81;</AssetTargetFallback>
+    <AssemblyName>Sixoclock.Onyx.Core</AssemblyName>
+    <PackageId>Sixoclock.Onyx.Core</PackageId>
+    <GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>
+    <GenerateAssemblyDescriptionAttribute>false</GenerateAssemblyDescriptionAttribute>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+    <UserSecretsId>Sixoclock-Onyx-894FDFC1-6482-4A56-926A-3C46C9FE0329</UserSecretsId>
+    <RootNamespace>Sixoclock.Onyx</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Localization\Onyx\Onyx-ar.xml" />
+    <EmbeddedResource Include="Localization\Onyx\Onyx-de.xml" />
+    <EmbeddedResource Include="Localization\Onyx\Onyx-es.xml" />
+    <EmbeddedResource Include="Localization\Onyx\Onyx-fr.xml" />
+    <EmbeddedResource Include="Localization\Onyx\Onyx-it.xml" />
+    <EmbeddedResource Include="Localization\Onyx\Onyx-pt-BR.xml" />
+    <EmbeddedResource Include="Localization\Onyx\Onyx-ru.xml" />
+    <EmbeddedResource Include="Localization\Onyx\Onyx-sv.xml" />
+    <EmbeddedResource Include="Localization\Onyx\Onyx-tr.xml" />
+    <EmbeddedResource Include="Localization\Onyx\Onyx-zh-CN.xml" />
+    <EmbeddedResource Include="Localization\Onyx\Onyx.xml" />
+    <EmbeddedResource Include="Emailing\EmailTemplates\default.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="LinqKit.Microsoft.EntityFrameworkCore" Version="1.1.11" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="2.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="2.0.0" />
+    <PackageReference Include="Abp.ZeroCore.IdentityServer4.EntityFrameworkCore" Version="3.1.2" />
+    <PackageReference Include="Abp.AutoMapper" Version="3.1.2" />
+    <PackageReference Include="Abp.MailKit" Version="3.1.2" />
+    <PackageReference Include="Castle.Windsor.MsDependencyInjection" Version="3.1.0" />
+  </ItemGroup>
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net461' ">
+    <Reference Include="System" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Transactions" />
+    <PackageReference Include="Abp.Zero.Ldap" Version="3.1.2" />
+  </ItemGroup>
+  <ItemGroup Condition=" '$(TargetFramework)' == 'netcoreapp2.0' ">
+    <PackageReference Include="System.ComponentModel.Annotations" Version="4.4.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.Extensions.SecretManager.Tools" Version="2.0.0" />
+  </ItemGroup>
+  <PropertyGroup Condition="'$(TargetFramework)'=='net461'">
+    <DefineConstants>FEATURE_LDAP;FEATURE_SIGNALR</DefineConstants>
+  </PropertyGroup>
+</Project>

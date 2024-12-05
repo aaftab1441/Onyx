@@ -1,0 +1,6 @@
+﻿@using Sixoclock.Onyx.Web.Areas.App.Models.Common
+@model IPermissionsEditViewModel
+
+<div class="permission-tree">
+    @Html.Partial("~/Areas/App/Views/Common/_PermissionTreeItem.cshtml", new PermissionTreeItemModel(Model, null))
+</div>

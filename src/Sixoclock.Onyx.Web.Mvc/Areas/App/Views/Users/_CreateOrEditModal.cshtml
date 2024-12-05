@@ -1,0 +1,396 @@
+﻿@using Abp.Authorization.Users
+@using Abp.Configuration
+@using Abp.Extensions
+@using Abp.Json
+@using Abp.Zero.Configuration
+@using Sixoclock.Onyx.Web.Areas.App.Models.Users
+@model CreateOrEditUserModalViewModel
+
+<script>
+    window.passwordComplexitySetting = @Html.Raw(Model.PasswordComplexitySetting.ToJsonString(indented: true));
+</script>
+
+<div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+            <h4 class="modal-title">
+                @if (Model.IsEditMode)
+                {
+                    <input type="hidden" id="Id" value="@Model.User.Id" />
+                }
+                @if (Model.User.Id == 0)
+                {
+                    <span>@L("CreateNewUser")</span>
+                }
+                else
+                {
+                    <span>@(L("EditUser") + ": " + Model.User.UserName)</span>
+                }
+            </h4>
+        </div>
+        <div class="modal-body">
+            <div class="tabbable-line">
+                <ul class="nav nav-tabs ">
+                    <li class="active">
+                        <a href="#UserInformationsTab" data-toggle="tab" aria-expanded="true">
+                            @L("UserInformations")
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="#RolesTab" data-toggle="tab" aria-expanded="false">
+                            @L("Roles") <b class="badge badge-primary"><span id="assigned-role-count">@Model.AssignedRoleCount</span></b>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="#OrganizationUnitsTab" data-toggle="tab" aria-expanded="false">
+                            @L("OrganizationUnits")
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="#BillingTab" data-toggle="tab" aria-expanded="false">
+                            @L("Billing")
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="#TagsTab" data-toggle="tab" aria-expanded="false">
+                            @L("Tags")
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="#TransactionsTab" data-toggle="tab" aria-expanded="false">
+                            @L("Transactions")
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="#TotalsTab" data-toggle="tab" aria-expanded="false">
+                            @L("Totals")
+                        </a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="UserInformationsTab">
+                        <form name="UserInformationsForm" role="form" novalidate class="form-validation">
+                            @if (Model.IsEditMode)
+                            {
+                                <input type="hidden" name="Id" value="@Model.User.Id" />
+                            }
+                            <div class="row">
+                                <div class="col-sm-4 text-center">
+                                    @if (Model.ProfilePictureId.HasValue)
+                                    {
+                                        <img src="@Url.Action("GetProfilePictureById", "Profile", new { area = string.Empty })?id=@(Model.ProfilePictureId.Value)" width="128" height="128" class="img-thumbnail img-rounded user-edit-dialog-profile-image" />
+                                    }
+                                    else
+                                    {
+                                        <img src="@Url.Content("~/Common/Images/default-profile-picture.png")" width="128" height="128" class="img-thumbnail img-rounded user-edit-dialog-profile-image" />
+                                    }
+                                </div>
+                                <div class="col-sm-8">
+                                    <div class="form-group form-md-line-input form-md-floating-label no-hint">
+                                        <input class="form-control@(Model.User.Name.IsNullOrEmpty() ? "" : " edited")" value="@Model.User.Name" type="text" name="Name" required maxlength="@Sixoclock.Onyx.Authorization.Users.User.MaxNameLength">
+                                        <label>@L("Name")</label>
+                                    </div>
+                                    <div class="form-group form-md-line-input form-md-floating-label no-hint">
+                                        <input type="text" name="Surname" class="form-control@(Model.User.Surname.IsNullOrEmpty() ? "" : " edited")" value="@Model.User.Surname" required maxlength="@Sixoclock.Onyx.Authorization.Users.User.MaxSurnameLength">
+                                        <label>@L("Surname")</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group form-md-line-input form-md-floating-label no-hint">
+                                <input type="text" name="Address" class="form-control@(Model.User.Address.IsNullOrEmpty() ? "" : " edited")" value="@Model.User.Address">
+                                <label>@L("Address")</label>
+                            </div>
+                            <div class="form-group form-md-line-input form-md-floating-label no-hint">
+                                <input type="text" name="Street" class="form-control@(Model.User.Street.IsNullOrEmpty() ? "" : " edited")" value="@Model.User.Street">
+                                <label>@L("Street")</label>
+                            </div>
+                            <div class="form-group form-md-line-input form-md-floating-label no-hint">
+                                <input type="text" name="Zip" class="form-control@(Model.User.Zip.IsNullOrEmpty() ? "" : " edited")" value="@Model.User.Zip">
+                                <label>@L("Zip")</label>
+                            </div>
+                            <div class="form-group form-md-line-input form-md-floating-label no-hint">
+                                <input type="text" name="City" class="form-control@(Model.User.City.IsNullOrEmpty() ? "" : " edited")" value="@Model.User.City">
+                                <label>@L("City")</label>
+                            </div>
+                            <div class="form-group form-md-line-input form-md-floating-label no-hint">
+                                <label class="form-md-floating-label">@L("Country")</label>
+                                <select name="CountryId" class="form-control bs-select">
+                                    <option value="">@L("DropdownDefault")</option>
+                                    @for (int i = 0; i < ViewBag.Countries.Items.Count; i++)
+                                    {
+                                        @if (Model.User.CountryId == ViewBag.Countries.Items[i].Id)
+                                        {
+
+                                            <option value="@ViewBag.Countries.Items[i].Id" selected>@ViewBag.Countries.Items[i].Name</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="@ViewBag.Countries.Items[i].Id">@ViewBag.Countries.Items[i].Name</option>
+                                        }
+
+                                    }
+                                </select>
+                            </div>
+                            <div class="form-group form-md-line-input form-md-floating-label no-hint">
+                                <input type="email" name="EmailAddress" class="form-control@(Model.User.EmailAddress.IsNullOrEmpty() ? "" : " edited")" value="@Model.User.EmailAddress" required maxlength="@AbpUserBase.MaxEmailAddressLength">
+                                <label>@L("EmailAddress")</label>
+                            </div>
+                            <div class="form-group form-md-line-input form-md-floating-label no-hint">
+                                <input type="text" name="PhoneNumber" class="form-control@(Model.User.PhoneNumber.IsNullOrEmpty() ? "" : " edited")" value="@Model.User.PhoneNumber" maxlength="@Sixoclock.Onyx.Authorization.Users.User.MaxPhoneNumberLength">
+                                <label>@L("PhoneNumber")</label>
+                            </div>
+                            <div class="form-group form-md-line-input form-md-floating-label">
+                                <input type="text" @Html.Raw(!Model.CanChangeUserName ? "disabled=\"disabled\"" : "") name="UserName" class="form-control@(Model.User.EmailAddress.IsNullOrEmpty() ? "" : " edited")" value="@Model.User.UserName" required maxlength="@AbpUserBase.MaxUserNameLength">
+                                <label>@L("UserName")</label>
+                                @if (!Model.CanChangeUserName)
+                                {
+                                    <span class="help-block">@L("CanNotChangeAdminUserName")</span>
+                                }
+                            </div>
+                            <div class="md-checkbox-list">
+                                <div class="md-checkbox">
+                                    <input id="EditUser_SetRandomPassword" class="md-check" type="checkbox" name="SetRandomPassword" value="true" @Html.Raw(Model.IsEditMode ? "" : "checked=\"checked\"") />
+                                    <label for="EditUser_SetRandomPassword">
+                                        <span class="inc"></span>
+                                        <span class="check"></span>
+                                        <span class="box"></span>
+                                        @L("SetRandomPassword")
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group form-md-line-input form-md-floating-label no-hint user-password" style="@(Model.IsEditMode ? "display:block" : "display:none")">
+                                <input id="EditUser_Password" type="password" name="Password" class="form-control" maxlength="@Sixoclock.Onyx.Authorization.Users.User.MaxPlainPasswordLength">
+                                <label>@L("Password")</label>
+                            </div>
+                            <div class="form-group form-md-line-input form-md-floating-label no-hint user-password" style="@(Model.IsEditMode ? "display:block" : "display:none")">
+                                <input type="password" name="PasswordRepeat" class="form-control" maxlength="@Sixoclock.Onyx.Authorization.Users.User.MaxPlainPasswordLength" equalto="#EditUser_Password">
+                                <label>@L("PasswordRepeat")</label>
+                            </div>
+                            <div class="md-checkbox-list">
+                                <div class="md-checkbox">
+                                    <input id="EditUser_ShouldChangePasswordOnNextLogin" class="md-check" type="checkbox" name="ShouldChangePasswordOnNextLogin" value="true" @Html.Raw(Model.User.ShouldChangePasswordOnNextLogin ? "checked=\"checked\"" : "")>
+                                    <label for="EditUser_ShouldChangePasswordOnNextLogin">
+                                        <span class="inc"></span>
+                                        <span class="check"></span>
+                                        <span class="box"></span>
+                                        @L("ShouldChangePasswordOnNextLogin")
+                                    </label>
+                                </div>
+                                <div class="md-checkbox">
+                                    <input id="EditUser_SendActivationEmail" class="md-check" type="checkbox" name="SendActivationEmail" value="true" @Html.Raw(Model.IsEditMode ? "" : "checked=\"checked\"")>
+                                    <label for="EditUser_SendActivationEmail">
+                                        <span class="inc"></span>
+                                        <span class="check"></span>
+                                        <span class="box"></span>
+                                        @L("SendActivationEmail")
+                                    </label>
+                                </div>
+                                <div class="md-checkbox">
+                                    <input id="EditUser_IsActive" class="md-check" type="checkbox" name="IsActive" value="true" @Html.Raw(Model.User.IsActive ? "checked=\"checked\"" : "")>
+                                    <label for="EditUser_IsActive">
+                                        <span class="inc"></span>
+                                        <span class="check"></span>
+                                        <span class="box"></span>
+                                        @L("Active")
+                                    </label>
+                                </div>
+                                @if (SettingManager.GetSettingValue<bool>(AbpZeroSettingNames.UserManagement.TwoFactorLogin.IsEnabled))
+                                {
+                                    <div class="md-checkbox">
+                                        <input id="EditUser_IsTwoFactorEnabled" class="md-check" type="checkbox" name="IsTwoFactorEnabled" value="true" @Html.Raw(Model.User.IsTwoFactorEnabled ? "checked=\"checked\"" : "")>
+                                        <label for="EditUser_IsTwoFactorEnabled">
+                                            <span class="inc"></span>
+                                            <span class="check"></span>
+                                            <span class="box"></span>
+                                            @L("IsTwoFactorEnabled")
+                                        </label>
+                                    </div>
+                                }
+                                @if (SettingManager.GetSettingValue<bool>(AbpZeroSettingNames.UserManagement.UserLockOut.IsEnabled))
+                                {
+                                    <div class="md-checkbox">
+                                        <input id="EditUser_IsLockoutEnabled" class="md-check" type="checkbox" name="IsLockoutEnabled" value="true" @Html.Raw(Model.User.IsLockoutEnabled ? "checked=\"checked\"" : "")>
+                                        <label for="EditUser_IsLockoutEnabled" data-toggle="tooltip" title="@L("IsLockoutEnabled_Hint")">
+                                            <span class="inc"></span>
+                                            <span class="check"></span>
+                                            <span class="box"></span>
+                                            @L("IsLockoutEnabled")
+                                        </label>
+                                    </div>
+                                }
+                            </div>
+                        </form>
+                    </div>
+                    <div class="tab-pane" id="RolesTab">
+                        <div class="md-checkbox-list user-role-checkbox-list">
+                            @foreach (var role in Model.Roles)
+                            {
+                                <div class="md-checkbox">
+                                    <input id="EditUser_@(role.RoleName)" class="md-check" type="checkbox" name="@(role.RoleName)" value="true" @Html.Raw(role.IsAssigned ? "checked=\"checked\"" : "")>
+                                    <label for="EditUser_@(role.RoleName)">
+                                        <span class="inc"></span>
+                                        <span class="check"></span>
+                                        <span class="box"></span>
+                                        @role.RoleDisplayName
+                                    </label>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="OrganizationUnitsTab">
+                        <div class="list-group">
+                            @Html.Partial("~/Areas/App/Views/Common/_OrganizationTree.cshtml", Model)
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="BillingTab">
+                        <form name="BillingForm" role="form" novalidate class="form-validation">
+                            @if (Model.IsEditMode)
+                            {
+                                <input type="hidden" name="Id" value="@Model.User.Id" />
+                            }
+                            <div class="form-group form-md-line-input form-md-floating-label no-hint">
+                                <label>@L("PricePerKwh")</label>
+                                <input type="text" name="CostkWh" class="form-control@(Model.User.CostkWh == null ? "" : " edited")" value="@Model.User.CostkWh">
+                            </div>
+                            <div class="form-group form-md-line-input form-md-floating-label no-hint">
+                                <label class="inline-labels">@L("Currency")</label>
+                                <select name="CurrencyId" class="form-control bs-select">
+                                    <option value="">@L("DropdownDefault")</option>
+                                    @for (int i = 0; i < ViewBag.Currencies.Items.Count; i++)
+                                    {
+                                        @if (Model.User.CurrencyId!=null && Model.User.CurrencyId == ViewBag.Currencies.Items[i].Id)
+                                        {
+
+                                            <option value="@ViewBag.Currencies.Items[i].Id" selected>@ViewBag.Currencies.Items[i].Name</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="@ViewBag.Currencies.Items[i].Id">@ViewBag.Currencies.Items[i].Name</option>
+                                        }
+                                    }
+                                </select>
+                            </div>
+                            <div class="form-group form-md-line-input form-md-floating-label no-hint">
+                                <label>@L("OR")</label>
+                            </div>
+                            <div class="form-group form-md-line-input form-md-floating-label no-hint">
+                                <label class="inline-labels">@L("PricePerMin")</label>
+                                <input type="text" name="CostMin" class="form-control@(Model.User.CostMin == null ? "" : " edited")" value="@Model.User.CostMin">
+                            </div>
+                            <div class="form-group form-md-line-input form-md-floating-label no-hint">
+                                <label class="inline-labels">@L("RfidTagId")</label>
+                                <input type="text" name="RfidTagId" class="form-control" id="RfidTagId">
+                            </div>
+                            <div class="form-group form-md-line-input form-md-floating-label no-hint">
+                                <input type="button" class="btn blue jtable-edit-command-button" id="btnVerify" value="Verify" />
+                            </div>
+                            <div class="form-group form-md-line-input form-md-floating-label no-hint">
+                                <label class="inline-labels">@L("BillingType")</label>
+                                <select name="BillingTypeId" class="form-control bs-select">
+                                    <option value="">@L("DropdownDefault")</option>
+                                    @for (int i = 0; i < ViewBag.BillingTypes.Items.Count; i++)
+                                    {
+                                        @if (Model.User.BillingTypeId != null && Model.User.BillingTypeId == ViewBag.BillingTypes.Items[i].Id)
+                                        {
+
+                                            <option value="@ViewBag.BillingTypes.Items[i].Id" selected>@ViewBag.BillingTypes.Items[i].Name</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="@ViewBag.BillingTypes.Items[i].Id">@ViewBag.BillingTypes.Items[i].Name</option>
+                                        }
+                                    }
+                                </select>
+                            </div>
+                            <div class="form-group form-md-line-input form-md-floating-label no-hint">
+                                <label class="inline-labels">@L("Comment")</label>
+                                <textarea name="Comment" class="form-control@(Model.User.Comment == null ? "" : " edited")" value="@Model.User.Comment" rows="4" cols="50" />
+                            </div>
+                        </form>
+                    </div>
+                    <div class="tab-pane" id="TagsTab">
+                        <form name="TagsForm" role="form" novalidate class="form-validation">
+                            @if (Model.IsEditMode)
+                            {
+                                <input type="hidden" name="Id" value="@Model.User.Id" />
+                            }
+                            @if (Model.Tag == null)
+                            {
+                                <input type="hidden" name="TagId" value="0" />
+                                <input type="hidden" name="ParentTagId" value="0" />
+                            }
+                            else
+                            {
+                                <input type="hidden" name="TagId" value="@Model.Tag.TagId" />
+                                <input type="hidden" name="ParentTagId" value="@Model.Tag.ParentTagId" />
+                            }
+
+                            <div class="form-group form-md-line-input form-md-floating-label no-hint">
+                                <input type="text" name="IdToken" class="form-control@(Model.Tag != null && Model.Tag.IdToken.IsNullOrEmpty() ? "" : " edited")" value="@Model.Tag?.IdToken">
+                                <label>@L("TagId")</label>
+                            </div>
+                            <div class="form-group form-md-line-input form-md-floating-label no-hint">
+                                <input type="text" name="ParentTagValue" class="form-control@(Model.Tag != null && Model.Tag.ParentTagValue.IsNullOrEmpty() ? "" : " edited")" value="@Model.Tag?.ParentTagValue">
+                                <label>@L("ParentId")</label>
+                            </div>
+                            <div class="form-group form-md-line-input form-md-floating-label no-hint">
+                                <label class="inline-labels">@L("ExpiryDate")</label>
+                                @if (Model.Tag?.ExpiryDate == null)
+                                {
+                                    <input type="text" name="ExpiryDate" class="form-control@(Model.Tag != null && Model.Tag?.ExpiryDate == null ? "" : " edited") date-picker" id="datetimepicker" />
+                                }
+                                else
+                                {
+                                    <input type="text" name="ExpiryDate" class="form-control@(Model.Tag != null && Model.Tag?.ExpiryDate == null ? "" : " edited") date-picker" value="@(Convert.ToDateTime(Model.Tag.ExpiryDate).ToShortDateString())" id="datetimepicker" />
+                                }
+                            </div>
+                        </form>
+                    </div>
+                    <div class="tab-pane" id="TransactionsTab">
+                        <form name="TransactionsForm" role="form" novalidate class="form-validation" id="TransactionsFilterForm">
+                            @if (Model.IsEditMode)
+                            {
+                                <input type="hidden" name="Id" value="@Model.User.Id" />
+                            }
+                            <div class="table-responsive">
+                                <table id="TransactionsTable" class="display table table-striped table-bordered table-hover dt-responsive nowrap">
+                                    <thead>
+                                        <tr>
+                                            <th>@L("Date")</th>
+                                            <th>@L("Start")</th>
+                                            <th>@L("Stop")</th>
+                                            <th>@L("Duration")</th>
+                                            <th>@L("Kwh")</th>
+                                            <th>@L("Installation")</th>
+                                            <th>@L("Group")</th>
+                                            <th>@L("Charger")</th>
+                                            <th>@L("EVSE")</th>
+                                            <th>@L("User")</th>
+                                            <th>@L("Bill/Kwh")</th>
+                                            <th>@L("Bill/min")</th>
+                                            <th>@L("Cost")</th>
+                                            <th>@L("Earned")</th>
+                                            <th>@L("ToBill")</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="tab-pane" id="TotalsTab">
+                        <form name="TotalsForm" role="form" novalidate class="form-validation">
+                            @*<div id="morris_chart_3" style="height: 500px;width:100%"></div>*@
+                            <div id="container" style="height: 500px; margin: 0 auto"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn default close-button" data-dismiss="modal">@L("Cancel")</button>
+            <button type="button" class="btn blue save-button"><i class="fa fa-save"></i> <span>@L("Save")</span></button>
+        </div>
+    </div>
+</div>
+

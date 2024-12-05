@@ -1,0 +1,816 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<localizationDictionary culture="sv">
+  <texts>
+    <text name="HomePage" value="Start" />
+    <text name="AboutUs" value="Om oss" />
+    <text name="Administration" value="Administration" />
+    <text name="Roles" value="Roller" />
+    <text name="Users" value="Användare" />
+    <text name="InvalidFormMessage" value="Inte rätt information. Vänligen kontrollera." />
+    <text name="InvalidUserNameOrPassword" value="Fel användarnamn eller lösenord" />
+    <text name="ThereIsNoTenantDefinedWithName{0}" value="Det finns ingen SAAS-kund med namn {0}" />
+    <text name="TenantIsNotActive" value="SAAS-kund {0} är inte i bruk." />
+    <text name="UserIsNotActiveAndCanNotLogin" value="Användare {0} är avaktiverad och kan inte logga in." />
+    <text name="PleaseEnterLoginInformation" value="Skrin in användare och lösenord" />
+    <text name="TenancyName" value="Kontonamn" />
+    <text name="UserNameOrEmail" value="Användarnamn eller email" />
+    <text name="Password" value="Lösenord" />
+    <text name="RememberMe" value="Kom ihåg mig" />
+    <text name="LogIn" value="Logga in" />
+    <text name="ForgotPassword" value="Glömt lösenordet?" />
+    <text name="DontYouHaveAnAccount" value="Har du ett konto hos oss?" />
+    <text name="CreateAnAccount" value="Skapa konto" />
+    <text name="Pages" value="Sidor" />
+    <text name="RoleName" value="Roll" />
+    <text name="EditRole" value="Ändra roll" />
+    <text name="CreateNewRole" value="Skapa roll" />
+    <text name="RoleProperties" value="Egenskaper" />
+    <text name="Permissions" value="Behörighet" />
+    <text name="Save" value="Spara" />
+    <text name="Cancel" value="Tillbaka" />
+    <text name="RolesHeaderInfo" value="Använd roller för gruppbehörigheter." />
+    <text name="Static" value="Statisk" />
+    <text name="Actions" value="Åtgärder" />
+    <text name="Delete" value="Ta bort" />
+    <text name="SavedSuccessfully" value="Sparat." />
+    <text name="AreYouSure" value="Är du säker?" />
+    <text name="YesDelete" value="JA, ta bort!" />
+    <text name="DeletingUser" value="Ta bort användare" />
+    <text name="UsersHeaderInfo" value="Hantera användare och behörigheter." />
+    <text name="ConfigKeys" value="OCPP"></text>
+    <text name="CreateNewUser" value="Skapa användare" />
+    <text name="UserName" value="Användare" />
+    <text name="Name" value="Namn" />
+    <text name="ModelName" value="Modell" />
+    <text name="ConfigKey" value="OCPP" />
+    <text name="DefaultValue" value="Värde"></text>
+    <text name="OCPPVersion" value="OCPP-Version"></text>
+    <text name="Feature" value="OCPP-Feature"></text>
+    <text name="EditDefaultConfig" value="Ändra standardvärden för konfiguration"></text>
+    <text name="RW" value="Läs och skriv"></text>
+    <text name="Description" value="Beskrivning"></text>
+    <text name="Address1" value="Adress 1" />
+    <text name="Address2" value="Adress 2" />
+    <text name="ZipCode" value="Postnummer"></text>
+    <text name="City" value="Stad"></text>
+    <text name="State" value="Land"></text>
+    <text name="Phone1" value="Tel hem"></text>
+    <text name="Phone2" value="Tel arbete"></text>
+    <text name="LastLoginTime" value="Senaste login" />
+    <text name="EditUser" value="Ändra användare" />
+    <text name="UserInformations" value="Information om användare" />
+    <text name="PasswordRepeat" value="Lösenord (repetera)" />
+    <text name="SuccessfullyDeleted" value="Borttaget!" />
+    <text name="RoleDeleteWarningMessage" value="Roll {0} kommer att tas bort och tas bort och därmed att tas bort från alla användare." />
+    <text name="UserDeleteWarningMessage" value="Användare {0} kommer att tas bort." />
+    <text name="Active" value="Aktiv" />
+    <text name="EmailConfirm" value="Email" />
+    <text name="Yes" value="Ja" />
+    <text name="No" value="Nej" />
+    <text name="MySettings" value="Mina inställningar" />
+    <text name="Logout" value="Logga ut" />
+    <text name="Reset" value="Återställ" />
+    <text name="ResetPermissionsTooltip" value="Den här åtgärden återställer användarens behörigheter. Användaren kommer endast att ha behörighet från tilldelade roller." />
+    <text name="ResetSuccessfully" value="Återställt!" />
+    <text name="Tenants" value="SAAS-kunder" />
+    <text name="TenantsHeaderInfo" value="Hantera SAAS-kunder." />
+    <text name="CreateNewTenant" value="Skapa SAAS-kund" />
+    <text name="TenancyCodeName" value="SAAS" />
+    <text name="TenantName" value="SAAS-kund" />
+    <text name="TenantDeleteWarningMessage" value="SAAS-kund {0} kommer att tas bort." />
+    <text name="AdminEmailAddress" value="Email till admin" />
+    <text name="AdminPassword" value="Lösenord till admin" />
+    <text name="AdminPasswordRepeat" value="Lösenord till admin (repetera)" />
+    <text name="EditTenant" value="Ändra SAAS-kund" />
+    <text name="ChangingPermissions" value="Ändra behörigheter" />
+    <text name="EditingUser" value="Ändra användare" />
+    <text name="CreatingNewUser" value="Skapa användare" />
+    <text name="Edit" value="Ändra" />
+    <text name="EditingTenant" value="Ändra SAAS-kund" />
+    <text name="CreatingNewTenant" value="Skapa SAAS-kund" />
+    <text name="DeletingTenant" value="Ta bort SAAS-kund" />
+    <text name="EditingRole" value="Ändra roll" />
+    <text name="CreatingNewRole" value="Skapa roll" />
+    <text name="DeletingRole" value="Ta bort roll" />
+    <text name="CreationTime" value="Skapad" />
+    <text name="Created" value="Skapad" />
+    <text name="SearchWithThreeDot" value="Sök..." />
+    <text name="ResetSpecialPermissions" value="Återställ behörigheter" />
+    <text name="SavingWithThreeDot" value="Sparar..." />
+    <text name="Settings" value="Inställningar" />
+    <text name="SaveAll" value="Spara allt" />
+    <text name="SettingsHeaderInfo" value="Visa och ändra inställningar i Spine." />
+    <text name="EmailSmtp" value="Email (SMTP)" />
+    <text name="DefaultFromAddress" value="Default from (sender) email address." />
+    <text name="DefaultFromDisplayName" value="Default from (sender) display name" />
+    <text name="SmtpHost" value="SMTP host" />
+    <text name="SmtpPort" value="SMTP port" />
+    <text name="UseDefaultCredentials" value="Använd standardinloggningsuppgifter" />
+    <text name="DomainName" value="Domännamn" />
+    <text name="UseSsl" value="Använd SSL" />
+    <text name="ThisWebSiteRootAddress" value="Web site root address" />
+    <text name="ThisWebSiteRootAddress_Hint" value="Adressen används för att skapa länkar till siten, t.ex. för återställning av lösenord. Ex: http://my-spine.com/" />
+    <text name="General" value="Allmän" />
+    <text name="SendPasswordResetLink_Information" value="En länk för återställning av lösenordet kommer att skickas till din emailadress. Om du inte får något email inom några minuter, var vänlig försök igen." />
+    <text name="Send" value="Skicka" />
+    <text name="PasswordReset" value="Återställning av lösenord" />
+    <text name="InvalidUserNameOrEmailAddress" value="Ogiltigt namn eller emailadress" />
+    <text name="PasswordResetEmail_Subject" value="Återställning av lösenord i Spine" />
+    <text name="PasswordResetEmail_Title" value="Återställning av lösenord i Spine." />
+    <text name="PasswordResetEmail_SubTitle" value="Detta email har skickats till dig för att du skall kunna återställa ditt lösenord." />
+    <text name="PasswordResetEmail_ClickTheLinkBelowToResetYourPassword" value="Klicka på länken nedan för att återställa ditt lösenord:" />
+    <text name="EmailActivation_Subject" value="Aktivera konto i Spine" />
+    <text name="EmailActivation_Title" value="Välkommen till Spine!" />
+    <text name="EmailActivation_SubTitle" value="Bekräfta din din email." />
+    <text name="EmailActivation_ClickTheLinkBelowToVerifyYourEmail" value="Klicka på länken nedan för att bekräfta din emailadress:" />
+    <text name="InvalidEmailAddress" value="Ogiltig emailadress" />
+    <text name="InvalidPasswordResetCode" value="Ogiltig kod för återställning av lösenord" />
+    <text name="InvalidPasswordResetCode_Detail" value="Please be sure you entered this page by clicking the link sent to your email. If this not solves the problem, you can re-try to request a new password reset link." />
+    <text name="PleaseEnterYourNewPassword" value="Nytt lösenord:." />
+    <text name="UserEmailIsNotConfirmedAndCanNotLogin" value="Din emailadress är inte aktiverad. Kolla din email och klicka på länken för att aktivera ditt konto. Om du inte fått något aktiveringsmail, klicka på 'Bekräfta email', så skickas ett email till dig med en aktiveringslänk." />
+    <text name="LoginFailed" value="Login misslyckades!" />
+    <text name="InvalidEmailConfirmationCode" value="Ogiltig kod från bekräftelsemail" />
+    <text name="InvalidEmailConfirmationCode_Detail" value="Please be sure you entered this page by clicking the link sent to your email. If this not solves the problem, you can re-try to request a new confirmation code." />
+    <text name="YourEmailIsConfirmedMessage" value="Din emailadress är bekräftad." />
+    <text name="ShouldChangePasswordOnNextLogin" value="Ändra lösenord vid nästa login" />
+    <text name="SetRandomPassword" value="Slumpa lösenord" />
+    <text name="EmailActivation" value="Aktivera via email" />
+    <text name="SendEmailActivationLink_Information" value="Ett email med en aktiveringslänk kommer att skickas till din emailadress. Om du inte får mailet inom några minuter, vänligen försök igen." />
+    <text name="SendActivationEmail" value="Skicka aktiveringsmail" />
+    <text name="ChangePassword" value="Ändra lösenord" />
+    <text name="CurrentPassword" value="Nuvarande lösenord" />
+    <text name="NewPassword" value="Nytt lösenord" />
+    <text name="NewPasswordRepeat" value="Nytt lösenord (repetera)" />
+    <text name="YourPasswordHasChangedSuccessfully" value="Ditt lösenord har ändrats" />
+    <text name="SelfUserRegistrationIsDisabledMessage" value="Det går inte att registrera sig i Spine!" />
+    <text name="SelfUserRegistrationIsDisabledMessage_Detail" value="Registrering online är avaktiverad. Vänligen kontakta oss för att ansöka om ett konto." />
+    <text name="SuccessfullyRegistered" value="Registrerad" />
+    <text name="ConfirmationMailSentPleaseClickLinkInTheEmail" value="Ett email med bekräftelse är skickat till {0}.Vänligen klicka på länken i mailet för att bekräfta din emailadress." />
+    <text name="YourAccountIsWaitingToBeActivatedByAdmin" value="Vi jobbar med att aktivera ditt konto." />
+    <text name="NameSurname" value="Efternamn" />
+    <text name="UserManagement" value="Användarhantering" />
+    <text name="AllowUsersToRegisterThemselves" value="Tillåt användare att registrera sig själva i Spine." />
+    <text name="AllowUsersToRegisterThemselves_Hint" value="Användare kan bara läggas till via användaradmin om detta avaktiveras." />
+    <text name="NewRegisteredUsersIsActiveByDefault" value="Nya användare är aktiverarde automatiskt." />
+    <text name="NewRegisteredUsersIsActiveByDefault_Hint" value="Nya användare måste aktiveras manuellt." />
+    <text name="Default" value="Standard" />
+    <text name="DefaultRole_Description" value="Lägg till för nya användare." />
+    <text name="StaticRole_Tooltip" value="Statiska roller kan inte tas bort." />
+    <text name="EmailConfirmationRequiredForLogin" value="Bekräftelse via email krävs för att kunna logga in." />
+    <text name="{0}UserCannotBeDeleted" value="{0}. Användaren kan inte tas bort." />
+    <text name="TenantNameCanNotBeEmpty" value="Namn på SAAS-kund måste fyllas i." />
+    <text name="ExportToExcel" value="Exportera till Excel" />
+    <text name="ChangeProfilePicture" value="Ändra profilbild" />
+    <text name="TenantName_Regex_Description" value="Namn på SAAS-kund måste vara minst två tecken, börja med en bokstav och endast innehålla bokstäver, siffror -, och _." />
+    <text name="ProfilePicture_Change_Info" value="Använd en JPG/JPEG/PNG som är högst 1 MB stor." />
+    <text name="ChargepointModelImage_Change_Info" value="Välj en JPG/JPEG/PNG." />
+    <text name="ProfilePicture_Change_Error" value="Din profilbild kunde inte ändras." />
+    <text name="ChargepointModelImage_Change_Error" value="Din bild på en laddstation kunde inte laddas upp." />
+    <text name="ProfilePicture_Warn_SizeLimit" value="Bilden måste vara mindre än 1 MB. Välj en annan fil, eller ändra storleken." />
+    <text name="ProfilePicture_Warn_FileType" value="Du måste använda bilder i formaten JPG/JPEG/PNG. Välj en annan fil." />
+    <text name="Dashboard" value="Översikt" />
+    <text name="DashboardHeaderInfo" value="statistik och rapporter" />
+    <text name="GoToApplication" value="Spine" />
+    <text name="TenantInformations" value="Lägg upp ett konto i Spine" />
+    <text name="PersonalInformations" value="Information" />
+    <text name="AccountSettings" value="Kontoinställningar" />
+    <text name="Captha_Hint" value="Bevisa att du inte är en robot" />
+    <text name="Back" value="Tillbaka" />
+    <text name="Submit" value="Skicka" />
+    <text name="SignUp" value="Registrera" />
+    <text name="CaptchaCanNotBeEmpty" value="Säkerhetskod måste fyllas i." />
+    <text name="IncorrectCaptchaAnswer" value="Säkerhetskoden är inte giltig." />
+    <text name="FormIsNotValidMessage" value="Informationen är inte giltig. Vänligen korrigera." />
+    <text name="CanNotChangeAdminUserName" value="Kan inte ändra namn på admin." />
+    <text name="Error" value="Fel!!" />
+    <text name="OopsYouAreLost" value="Oops! Du är till råttorna." />
+    <text name="WeCanNotFindThePage" value="Sidan du letar efter finns inte." />
+    <text name="DashboardDemo_Note_Title" value="Välkommen till Spine!" />
+    <text name="DashboardDemo_Note_Info">
+      Använd menyn till vänster.
+      Dashboard för test.
+       .
+       .
+    </text>
+    <text name="WelcomePage_Title" value="Välkommen!" />
+    <text name="WelcomePage_Info" value="Välkommen till Spine. Använd menyn till höger. Om du inte ser någon meny har du troligen inga rättighter. Be din sys-admin om behörighet." />
+    <text name="RequestedFileDoesNotExists" value="Filen finns inte!" />
+    <text name="MailSent" value="Email skickat" />
+    <text name="PasswordResetMailSentMessage" value="Ett mail med en länk för att återställa ditt lösenord har skickats till din mailadress." />
+    <text name="ActivationMailSentMessage" value="Ett mail med en länk för att aktivera ditt konto har skickats till din mailadress." />
+    <text name="UseCaptchaOnRegistration" value="Svara på frågan i bilden (captcha) vid registreringen." />
+    <text name="FormBasedRegistration" value="Registrera med formulär" />
+    <text name="LdapSettings" value="Inställningar för LDAP" />
+    <text name="EnableLdapAuthentication" value="Aktivera authentikering med LDAP." />
+    <text name="OtherSettings" value="Övriga inställningar" />
+    <text name="AuditLogs" value="Loggar" />
+    <text name="Success" value="Klart" />
+    <text name="Time" value="Tid" />
+    <text name="Service" value="Tjänst" />
+    <text name="Action" value="Åtgärd" />
+    <text name="Duration" value="ms" />
+    <text name="IpAddress" value="IP-adress" />
+    <text name="Browser" value="Webläsare" />
+    <text name="Xms" value="{0} ms" />
+    <text name="Close" value="Stäng" />
+    <text name="Refresh" value="Uppdatera" />
+    <text name="ErrorState" value="Feltillstånd" />
+    <text name="All" value="Alla" />
+    <text name="HasError" value="Med fel" />
+    <text name="ShowAdvancedFilters" value="Visa avancerade filter" />
+    <text name="HideAdvancedFilters" value="Dölj avancerade filter" />
+    <text name="AuditLogDetail" value="Detaljerad logg" />
+    <text name="Parameters" value="Parametrar" />
+    <text name="DateRange" value="Datum" />
+    <text name="ActionInformations" value="Information om åtgärd" />
+    <text name="Today" value="Idag" />
+    <text name="Yesterday" value="Igår" />
+    <text name="Last7Days" value="Senaste 7 dagarna" />
+    <text name="Last30Days" value="Senaste 30 dagarna" />
+    <text name="ThisMonth" value="Innevarande månad" />
+    <text name="LastMonth" value="Senaste månaden" />
+    <text name="TenantSelection" value="Välj SAAS-kund" />
+    <text name="TenantSelection_Detail" value="Välj en SAAS-kund." />
+    <text name="LoginWith" value="Logga in med:" />
+    <text name="PasswordChangeDontRememberMessage" value="Vill du inte spara ditt lösenord, {0}." />
+    <text name="ClickHere" value="klicka här" />
+    <text name="Apply" value="Använd" />
+    <text name="CustomRange" value="Välj" />
+    <text name="DashboardNoteForMpaVersion">
+      <![CDATA[
+      Test <strong>Spine</strong> . <strong>.</strong>.
+      ]]>
+    </text>
+    <text name="DashboardNoteForSpaVersion">
+      <![CDATA[
+      Spine</strong> . <strong>.</strong>.
+      ]]>
+    </text>
+    <text name="SeeDemo" value="Spine" />
+    <text name="Edition" value="Nivå" />
+    <text name="Editions" value="Nivåer" />
+    <text name="EditionsHeaderInfo" value="Hantera nivåer och egenskaper för SAAS" />
+    <text name="CreateNewEdition" value="Lägg till ny nivå" />
+    <text name="EditEdition" value="Ändra nivå" />
+    <text name="EditionProperties" value="Egenskaper" />
+    <text name="EditionName" value="Nivå" />
+    <text name="Features" value="Egenskaper" />
+    <text name="EditionDeleteWarningMessage" value="{0} kommer att tas bort från alla SAAS-kunder som har egenskapen." />
+    <text name="CreatingNewEdition" value="Skapa ny nivå" />
+    <text name="EditingEdition" value="Ändra nivå" />
+    <text name="DeletingEdition" value="Ta bort nivå" />
+    <text name="ChangingFeatures" value="Ändra egenskaper" />
+    <text name="ResetSpecialFeatures" value="Återställ standardnivåer" />
+    <text name="ResetFeaturesTooltip" value="Ta bort SAAS-kundens egenskaper. SAAS-kunden kommer bara att ha egenskaper från kundens nivå." />
+    <text name="NotAssigned" value="Ingen nivå" />
+    <text name="InvalidFeaturesWarning" value="Ett eller flera värden stämmer inte!" />
+    <text name="Languages" value="Språk" />
+    <text name="LanguagesHeaderInfo" value="Hantera textsträngar." />
+    <text name="CreateNewLanguage" value="Skapa nytt språk" />
+    <text name="CreatingNewLanguage" value="Skap nytt språk" />
+    <text name="EditingLanguage" value="Ändra språk" />
+    <text name="DeletingLanguages" value="Ta bort språk" />
+    <text name="ChangingTexts" value="Ändra texter" />
+    <text name="SuccessfullySaved" value="Sparat." />
+    <text name="Language" value="Språk" />
+    <text name="Flag" value="Flagga" />
+    <text name="SetAsDefaultLanguage" value="Standardspråk" />
+    <text name="InvlalidLanguageCode" value="Felaktig språkkod." />
+    <text name="EditLanguage" value="Ändra språk" />
+    <text name="ChangeTexts" value="Ändra texter" />
+    <text name="TargetValue" value="Målvärde" />
+    <text name="CapacityValue" value="Kapacitet"></text>
+    <text name="Unit" value="Enhet"></text>
+    <text name="Power" value="AC/DC"></text>
+    <text name="BaseValue" value="Basvärde" />
+    <text name="Key" value="Nyckel" />
+    <text name="SaveAndClose" value="Spara &amp; Stäng" />
+    <text name="SaveAndNext" value="Spara &amp; Nästa" />
+    <text name="EditText" value="Ändra text" />
+    <text name="LanguageTexts" value="Språktexter" />
+    <text name="LanguageTextsHeaderInfo" value="Ändra språktexter." />
+    <text name="EmptyOnes" value="Tomma texter" />
+    <text name="Source" value="Källa" />
+    <text name="BaseLanguage" value="Basspråk" />
+    <text name="TargetLanguage" value="Målspråk" />
+    <text name="Previous" value="Förra" />
+    <text name="LanguageDeleteWarningMessage" value="Vill du verkligen ta bort språk {0}?" />
+    <text name="CanNotEditOrDeleteDefaultLanguages" value="Kan inte ändra eller ta bort standardspråk. Du kan bara ändra och ta bort språk du själv lagt till. Det går dock att ändra texter i alla språk." />
+    <text name="LookingForMpaVersion" value="Looking for Multi-Page Application Version?" />
+    <text name="LookingForSpaVersion" value="Looking for Single-Page Application Version?" />
+    <text name="ThisLanguageAlreadyExists" value="Detta språk finns redan!" />
+    <text name="OrganizationUnits" value="Strukturer" />
+    <text name="OrganizationUnitsHeaderInfo" value="Strukturera användare och begrepp" />
+    <text name="OrganizationTree" value="Struktur" />
+    <text name="Members" value="Medlemmar" />
+    <text name="SelectAnOrganizationUnitToSeeMembers" value="Välj en struktur för att se medlemmar." />
+    <text name="OrganizationUnitDeleteWarningMessage" value="Vill du ta bort strukturdelen {0}?" />
+    <text name="AddSubUnit" value="Lägg till strukturdel" />
+    <text name="AddMember" value="Lägg till medlem" />
+    <text name="SuccessfullyAdded" value="Tillagd" />
+    <text name="RemoveUserFromOuWarningMessage" value="Vill du ta bort användare {0} från strukturdelen {1}?" />
+    <text name="SuccessfullyRemoved" value="Borttagen" />
+    <text name="SelectAnItem" value="Välj" />
+    <text name="NewOrganizationUnit" value="Ny strukturdel" />
+    <text name="SelectAUser" value="Välj en användare" />
+    <text name="Select" value="Välj" />
+    <text name="UserIsAlreadyInTheOrganizationUnit" value="Användaren finns redan i strukturdelen!" />
+    <text name="AddRootUnit" value="Lägg till rot" />
+    <text name="AddUser" value="Lägg till användare" />
+    <text name="NoOrganizationUnitDefinedYet" value="Finns ingen struktur." />
+    <text name="OrganizationUnitMoveConfirmMessage" value="Bekräfta flytt av {0} till att ligga under {1}." />
+    <text name="Root" value="Rot" />
+    <text name="SuccessfullyMoved" value="Flyttad." />
+    <text name="AddedTime" value="Tillagd tid" />
+    <text name="ManagingMembers" value="Hantera medlemmar" />
+    <text name="ManagingOrganizationTree" value="Hantera struktur" />
+    <text name="LoginForUsers" value="Login för användare" />
+    <text name="LoginAsThisUser" value="Logga in som denna användare" />
+    <text name="BackToMyAccount" value="Tillbaka till mitt konto" />
+    <text name="LoginForTenants" value="Login för SAAS-kunder" />
+    <text name="LoginAsThisTenant" value="Logga in som SAAS-kund" />
+    <text name="AuditLogImpersonatedOperationInfo" value="OBS: Åtgärden åtförs för en annan användare, som denna användare." />
+    <text name="CustomData" value="Eget data" />
+    <text name="None" value="Ingen" />
+    <text name="YouCanBackToYourAccount" value="Gå tillbaka till ditt konto." />
+    <text name="CascadeImpersonationErrorMessage" value="Du kan bara anta en annan användare i ett steg. Du har readn antagit en annan användare." />
+    <text name="FromTenantToHostImpersonationErrorMessage" value="Du kan inte anta en superanvändare från en SAAS-kund." />
+    <text name="DifferentTenantImpersonationErrorMessage" value="Du kan inte anta en annan använadare som hör till en annan SAAS-kund." />
+    <text name="ImpersonationTokenErrorMessage" value="Token från inloggning som annnan användare har utgått!" />
+    <text name="NotImpersonatedLoginErrorMessage" value="Detta är en antagen login från en annan användare." />
+    <text name="YouCannotLinkToSameAccount">Kan inte länka till samma konto!</text>
+    <text name="ChangePasswordBeforeLinkToAnAccount">Byt lösenord innan du länkar till detta kontot!</text>
+    <text name="LinkedAccounts">Länkade konton</text>
+    <text name="ManageAccounts">Hantera konton</text>
+    <text name="LinkNewAccount">Länka nytt konto</text>
+    <text name="SuccessfullyUnlinked">Avlänkat</text>
+    <text name="LinkedUserDeleteWarningMessage">Länk till användare {0} kommer att tas bort.</text>
+    <text name="SwitchToLinkedAccountTokenErrorMessage" value="Token från inloggning som annan användare är utgången eller ogiltig." />
+    <text name="WelcomeToTheApplicationNotificationMessage" value="Välkommen till Spine! Meddelanden kommer att informera dig om händelser och nyheter. I inställningarna kan du välja vilken typ av meddelanden du vill ta emot." />
+    <text name="NewUserRegisteredNotificationDefinition" value="När en ny användare registrerar sig." />
+    <text name="NewUserRegisteredNotificationMessage" value="En ny användare registrerade sig. Användarnamn: {userName}, email: {emailAddress}." />
+    <text name="SeeAllNotifications" value="Se alla meddelanden" />
+    <text name="SetAsRead" value="markera som lästa" />
+    <text name="SetAllAsRead" value="Markera alla som lästa" />
+    <text name="NotificationSettings" value="Inställningar för meddelanden" />
+    <text name="ReceiveNotifications" value="ta emot meddelanden" />
+    <text name="ReceiveNotifications_Definition" value="Aktivera eller inaktivera meddelanden." />
+    <text name="NotificationTypes" value="Typer av meddelanden" />
+    <text name="ReceiveNotifications_DisableInfo" value="Du har valt att inte ta emot meddelanden. Du kan aktivera tjänsten och sedan välja vilka typer av meddelanden du vill ta emot." />
+    <text name="Notifications" value="Meddelanden" />
+    <text name="ThereIsNoNotification" value="Det finns inget meddelande." />
+    <text name="Unread" value="Oläst" />
+    <text name="YouCanNotDeleteOwnAccount" value="Du kan inte ta bort ditt egna konto" />
+    <text name="On" value="På" />
+    <text name="Off" value="Av" />
+    <text name="Maintenance">Underhåll</text>
+    <text name="Caches">Cache</text>
+    <text name="CacheSuccessfullyCleared">Cache rensad.</text>
+    <text name="AllCachesSuccessfullyCleared">All cache rensad.</text>
+    <text name="ClearAll">Rensa allt</text>
+    <text name="Clear">Rensa</text>
+    <text name="CachesHeaderInfo">Rensa all cache</text>
+    <text name="TestEmailSettingsHeader">Testa inställningar för email</text>
+    <text name="SendTestEmail">Skicka test-email</text>
+    <text name="TestEmail_Subject">Spine test-email</text>
+    <text name="TestEmail_Body">Detta är ett test-email.</text>
+    <text name="TestEmailSentSuccessfully">Test-email skickat.</text>
+    <text name="WebSiteLogs">Websiteloggar</text>
+    <text name="WebSiteLogsHeaderInfo">Loggar. Ladda ned alla loggar som .zip.</text>
+    <text name="DownloadAll">Ladda ned allt</text>
+    <text name="TenantManagement">Hantering av SAAS</text>
+    <text name="AllowTenantsToRegisterThemselves" value="Tillåt SAAS-kunder att registrera sig." />
+    <text name="AllowTenantsToRegisterThemselves_Hint" value="SAAS-kunder kan bara läggas till av admin." />
+    <text name="NewRegisteredTenantsIsActiveByDefault" value="Nya SAAS-kunder aktiveras automatiskt." />
+    <text name="NewRegisteredTenantsIsActiveByDefault_Hint" value="Nya SAAS-kunder måste aktiveras av admin för att kunna logga in." />
+    <text name="TenantSignUp">Registrera som SAAS</text>
+    <text name="NewTenantRegisteredNotificationDefinition" value="När en ny SAAS-kund registrerar sig." />
+    <text name="NewTenantRegisteredNotificationMessage" value="En ny SAAS-kund har registrerat sig. Namn: {tenancyName}." />
+    <text name="LoginAttempts">Försök att logga in</text>
+    <text name="Failed">Misslyckad</text>
+    <text name="NewTenant">Registrera som SAAS</text>
+    <text name="ResizedProfilePicture_Warn_SizeLimit" value="Bilden måste vara mindre än 100 kB. Ändra bilden och försök igen." />
+    <text name="RegisterFormUserNameInvalidMessage">Felaktig email.</text>
+    <text name="UseHostDatabase" value="Använd befintlig databas" />
+    <text name="DatabaseConnectionString" value="Uppkoppling till databas" />
+    <text name="TenantDatabaseConnectionStringChangeWarningMessage" value="OBS: Kopiera SAAS-kunden till ny databas innan du ändrar uppkopplingen till databasen." />
+    <text name="Timezone">Tidszon</text>
+    <text name="HasOwnDatabase">Egen databas</text>
+    <text name="TimeZoneSettingChangedRefreshPageNotification">Ändrat tidszon. Klicka OK för att uppdatera sidan.</text>
+    <text name="Ok">Ok</text>
+    <text name="Permission">Behörighet</text>
+    <text name="Role">Roll</text>
+    <text name="Security">Säkerhet</text>
+    <text name="PasswordComplexity">Lösenordskomplexitet</text>
+    <text name="UseDefaultSettings">Använd standardinställningar</text>
+    <text name="PasswordComplexityNotSatisfied">Lösenordet möter inte kraven.</text>
+    <text name="YouAlreadySentAFriendshipRequestToThisUser">Du har redan lagt till den här användaren som vän.</text>
+    <text name="YouCannotBeFriendWithYourself">Du kan inte bli vän med dig själv.</text>
+    <text name="NewChatMessageEmail_Title">Detaljer i meddelandet</text>
+    <text name="NewChatMessageEmail_SubTitle"></text>
+    <text name="NewChatMessageEmail_Subject">Du har ett nytt chattmeddelande</text>
+    <text name="Sender">Skickat av</text>
+    <text name="Message">Meddelande</text>
+    <text name="UserBlocked">Användaren blockerad.</text>
+    <text name="UserUnblocked">Användaren avblockerad.</text>
+    <text name="BlockUser">Blokera användare</text>
+    <text name="UnblockUser">Avblockera användare</text>
+    <text name="FriendshipRequestAccepted">Vänförfrågan accepterad</text>
+    <text name="UserSendYouAFriendshipRequest">{0} lade till dig som vän.</text>
+    <text name="Friends">Vänner</text>
+    <text name="Others">Övriga</text>
+    <text name="BlockedUsers">Blockerade användare</text>
+    <text name="YouDontHaveAnyFriend">Du har inga vänner. Skriv ett användarnamn och klicka på "Lägg till vän".</text>
+    <text name="YouDontHaveAnyBlockedFriend">Du har inga blockerade användare. För att blockera en vän, markera vännen och välj Blockera.</text>
+    <text name="ChatUserSearch_Hint">
+      <![CDATA[
+      Skriv användarens namn för användare i samma SAAS, <br>
+      <strong>[tenancyName]\[userName]</strong> för användare hos andra SAAS-kunder <br><br>
+      t.ex.: <br>
+      .\admin -> för host admin <br>
+      Test\admin -> för SAAS-kunden tests admin <br>
+      admin -> för din SAAS-kunds admin
+      ]]>
+    </text>
+    <text name="AddFriend">Lägg till vän</text>
+    <text name="TypeAMessageHere">Skriv meddelande...</text>
+    <text name="Chat">Chatta</text>
+    <text name="ChatFeature">Chatta</text>
+    <text name="ChatFeatureIsNotEnabledForSender">Chatt är inte aktiverat.</text>
+    <text name="ChatFeatureIsNotEnabledForReceiver">Chatt är inte aktiverat för denna SAAS-kund.</text>
+    <text name="UserIsBlocked">Användaren är blockerad.</text>
+    <text name="ChatIsNotConnectedWarning">Chatten är inte ansluten.</text>
+    <text name="Demo_SampleChatMessage">Hej, detta är ett testmeddelande. Logga in på ditt konto in en annan webläsare och kolla hur chatten fungerar.</text>
+    <text name="TenantToTenantChatFeatureIsNotEnabledForSender">Chatt med användare hos andra SAAS-kunder är inte aktiverat för dig.</text>
+    <text name="TenantToTenantChatFeatureIsNotEnabledForReceiver">Chatt med andra SAAS-kunder är inte aktiverat för denna SAAS-kund.</text>
+    <text name="TenantToHostChatFeatureIsNotEnabledForSender">Chatt med Spine är inte aktiverat.</text>
+    <text name="TenantToHostChatFeatureIsNotEnabledForReceiver">Chatt med Spine är inte aktiverat för SAAS-kunden</text>
+    <text name="TenantToTenantChatFeature">Chatta med andra SAAS-kunder</text>
+    <text name="TenantToHostChatFeature">Chatta med Spine</text>
+    <text name="FilterByPermission">Filtrera på behörighet</text>
+    <text name="FilterByRole">Filtrera på roll</text>
+    <text name="FilterByName">Filtrera på namn</text>
+    <text name="FilterByType">Filtrera på mätartyp</text>
+    <text name="FilterByCapacity">Filtrear på kapacitet</text>
+    <text name="FilterByEmail">Filtrera på email</text>
+    <text name="FilterOrAddUser">Filter/Lägg till användare</text>
+
+    <text name="FilterByClient">filtrera på kund</text>
+    <text name="FilterByRegion">filtrera på region</text>
+    <text name="FilterByErrorCode">filtrera på felkod</text>
+    <text name="FilterByVendorName">filtrera på tillverkare</text>
+    <text name="FilterByGroup">filtrera på grupp</text>
+    <text name="FilterByOption">filtrera på egenskap</text>
+    <text name="HangfireDashboard" value="Inställningar för Hangfire" />
+    <text name="CouldNotCompleteLoginOperation">Kunde inte logga in.</text>
+    <text name="UnAuthorizedOperation">Otillåten operation</text>
+    <text name="YouAreNotAuthorizedToPerformThisOperation">Du har inte behörighet.</text>
+    <text name="TargetUserNotFoundProbablyDeleted">Målanvändaren hittades ej. Troligen borttagen.</text>
+    <text name="UserLockedOutMessage">Användarkontot har låsts. Vänligen försök senare.</text>
+    <text name="SendSecurityCode">Skicka säkerhetskod.</text>
+    <text name="SendSecurityCode_Information">Välj en metod för verifikation. En kod baserad på verifikationen kommer att skickas.</text>
+    <text name="SendSecurityCodeErrorMessage">Säkerhetskoden kunde inte skickas!</text>
+    <text name="VerifySecurityCodeNotLoggedInErrorMessage">Du måste logga in för att verifiera dig! Förmodligen har ditt konto låsts. Gå till loginsidan och testa igen.</text>
+    <text name="VerificationCode">Verifieringskod</text>
+    <text name="VerifySecurityCode">Verifiera säkerhetskod</text>
+    <text name="VerifySecurityCode_Information">Ange verifieringskoden vi har skickat till dig.</text>
+    <text name="RememberThisBrowser">Kom ihåg denna webläsare</text>
+    <text name="InvalidSecurityCode">Ogiltig säkerhetskod!</text>
+    <text name="PhoneNumber">Telefon</text>
+    <text name="Unlock">Lås upp</text>
+    <text name="UnlockedTheUser">Lås upp användare {0}</text>
+    <text name="UserLockOut">Lås ute användare</text>
+    <text name="EnableUserAccountLockingOnFailedLoginAttemts">Aktivera konto som låsts pga misslyckade inloggningsförsök.</text>
+    <text name="MaxFailedAccessAttemptsBeforeLockout">Max antal misslyckade försök innna kontot låses</text>
+    <text name="DefaultAccountLockoutDurationAsSeconds">Antal sekunder att låsa kontot</text>
+    <text name="TwoFactorLogin">Tvåvägs-login</text>
+    <text name="EnableTwoFactorLogin">Aktivera tvåvägs användarlogin.</text>
+    <text name="IsEmailVerificationEnabled">Aktivera verifering via email.</text>
+    <text name="IsSmsVerificationEnabled">Aktivera verifiering via SMS.</text>
+    <text name="AllowToRememberBrowserForTwoFactorLogin">Tillåt att komma ihåg webläsare. OBS: Om detta är aktiverat kan användaren potentiellt hoppa över tvåvägs-login genom att använda samma webläsare.</text>
+    <text name="CurrentTenant">SAAS-kund</text>
+    <text name="NotSelected">Inte vald</text>
+    <text name="Change">Ändra</text>
+    <text name="ChangeTenant">Ändra SAAS-kund</text>
+    <text name="UnknownTenantId{0}" value="Okänd SAAS-kund med id: {0}" />
+    <text name="TenantIdIsNotActive{0}" value="Avaktiverad SAAS-kund med id: {0}" />
+    <text name="TimeoutPleaseTryAgain">Timeout! Vänligen försök igen.</text>
+    <text name="RemainingTime">Återstående tid</text>
+    <text name="SecondShort{0}">{0} sekunder</text>
+    <text name="ResetCode">Resetkod</text>
+    <text name="IsTwoFactorEnabled">Tvåvägs-authentikering aktiverad</text>
+    <text name="IsLockoutEnabled">Lockout aktiverad</text>
+    <text name="IsLockoutEnabled_Hint">Användaren är utelåst efter ett antal misslyckade inloggningsförsök.</text>
+    <text name="TenantRegistrationLoginInfo">Klicka för att logga in</text>
+    <text name="CouldNotValidateExternalUser">Kunde inte validera extern login</text>
+    <text name="LeaveEmptyToSwitchToHost">Lämna blank för att logga in som Spine</text>
+    <text name="PleaseWaitToConfirmYourEmailMessage">Vänligen vänta medan din emailadress bekräftas...</text>
+    <text name="ChatIsConnecting">Chatten kopplar upp...</text>
+    <text name="Note_RefreshPageForPermissionChanges">Uppdatera sidan för att ändrade behögheter skall tas i bruk.</text>
+    <text name="ApplicationLogo">Spine Logo</text>
+    <text name="CustomCSS">Custom CSS</text>
+    <text name="Upload">Ladda upp</text>
+    <text name="Download">Ladda ned</text>
+    <text name="UploadLogo_Info">Välj bild i JPG/JPEG/PNG/GIF med högst 30 kB filstorlek och 168x33 pixlar.</text>
+    <text name="UploadCSS_Info">Välj .css fil. Filstorlek högst 1 MB.</text>
+    <text name="Browse">Browse</text>
+    <text name="Appearance">Utseende</text>
+    <text name="ClearedSuccessfully">Borttaget</text>
+    <text name="File_Empty_Error">Välj en fil!</text>
+    <text name="File_SizeLimit_Error">Filen är större än tillåtet!</text>
+    <text name="File_Invalid_Type_Error">Ogiltig typ av fil!</text>
+    <text name="MaximumUserCount">Max antal användare (0 = obegränsat)</text>
+    <text name="MaximumUserCount_Error_Message">Uppnått max antal användare!</text>
+    <text name="MaximumUserCount_Error_Detail">SAAS-kunden har en gräns på {0} användare.</text>
+    <text name="UnlockedTenandAdmin">Låst upp adminanvändare för {0}</text>
+    <text name="EmailSecurityCodeSubject">Säkerhetskod</text>
+    <text name="EmailSecurityCodeBody">Din säkerhetskod är: {0}</text>
+    <text name="Sms">SMS</text>
+    <text name="SmsSecurityCodeMessage">Din säkerhetskod: {0}</text>
+    <text name="PasswordComplexity_RequireDigit_Hint">Lösenord måste ha minst en siffra ('0'-'9').</text>
+    <text name="PasswordComplexity_RequireLowercase_Hint">Lösenord måste ha minst en gemen ('a'-'z').</text>
+    <text name="PasswordComplexity_RequireNonAlphanumeric_Hint">Lösenord måste ha minst ett alfanumeriskt tecken .</text>
+    <text name="PasswordComplexity_RequireUppercase_Hint">Lösenord måste ha minst en gemen ('A'-'Z').</text>
+    <text name="PasswordComplexity_RequiredLength_Hint">Lösenord måste ha minst {0} tecken.</text>
+
+    <text name="PasswordComplexity_RequireDigit">Kräv siffra</text>
+    <text name="PasswordComplexity_RequireLowercase">Kräv gemener</text>
+    <text name="PasswordComplexity_RequireNonAlphanumeric">Kräv icke alfanumeriskt tecken</text>
+    <text name="PasswordComplexity_RequireUppercase">Kräv versaler</text>
+    <text name="PasswordComplexity_RequiredLength">Kräv längd på lösenord</text>
+
+    <text name="Topology">Topologi</text>
+    <text name="Client">Kund</text>
+    <text name="ClientsHeaderInfo" value="Hantera kunder och behörigheter." />
+    <text name="CreateNewClient" value="Lägg till kund" />
+    <text name="CountryName">Land</text>
+    <text name="ClientName">Kund</text>
+    <text name="Countries">Länder</text>
+    <text name="CountriesHeaderInfo" value="Hantera länder och behörigheter." />
+    <text name="ChargepointModelImagesHeaderInfo" value="Hantera bilder och behörigheter." />
+    <text name="RegionsHeaderInfo" value="Hantera regioner och behörigheter." />
+    <text name="ErrorCodesHeaderInfo" value="Hantera felkoder och behörigheter." />
+    <text name="InstallsHeaderInfo" value="Hantera installationer och behörigheter." />
+    <text name="GroupsHeaderInfo" value="Hantera grupper och behörigheter." />
+    <text name="ChargeReleaseOptionsHeaderInfo" value="Hantera egenskaper och behörigheter för start, t.ex. Rfid eller startknapp" />
+    <text name="ComOptionsHeaderInfo" value="Hantera egenskaper och behörigheter för kommunikation." />
+    <text name="ElectricalOptionsHeaderInfo" value="Hantera egenskaper och behörigheter för el." />
+    <text name="OtherOptionsHeaderInfo" value="Hantera övriga egenskaper och behörgheter." />
+    <text name="ElectricalOptions" value="Elektriska egenskaper"></text>
+    <text name="OtherOptions" value="Övriga egenskaper"></text>
+    <text name="SegmentsHeaderInfo" value="Hantera segment och behörigheter." />
+    <text name="VendorsHeaderInfo" value="Hantera tillverkare av laddare och behörigheter." />
+    <text name="ModelConnectorsHeaderInfo" value="Hantera uttag och rättigheter i modeller."></text>
+    <text name="ChargepointModelsHeaderInfo" value="Hantera modeller av laddare och behörigheter." />
+    <text name="ConfigsHeaderInfo" value="Hantera konfiguration och behörigheter. OBS, denna sida är på engelska då OCPP-standarden är på engelska" />
+    <text name="CreateConfig" value="Hantera OCPP-konfiguartionsnycklar som används som startvärden när en ny modell av laddare byggs."></text>
+    <text name="AdminStatusesHeaderInfo" value="Hantera statuskoder och behörigheter." />
+    <text name="MeterTypesHeaderInfo" value="Hantera mätartyper och behörigheter." />
+    <text name="CapacitiesHeaderInfo" value="Hantera kapacitetsvärden och behörigheter." />
+    <text name="MountTypesHeaderInfo" value="Hantera typer av montage och behörigheter."></text>
+    <text name="CreateNewCountry" value="Lägg till land" />
+    <text name="CreateNewChargepointModelImage" value="Lägg till bild"></text>
+    <text name="CreateNewRegion" value="Lägg till region" />
+    <text name="CreateNewInstall" value="Lägg till installation" />
+    <text name="CreateNewGroup" value="Lägg till grupp" />
+    <text name="CreateNewSegment" value="Lägg till segment" />
+    <text name="CreateNewVendor" value="Lägg till tillverkare av laddare" />
+    <text name="CreateModelConnector" value="Lägg till uttag"></text>
+    <text name="CreateNewChargepointModel" value="Lägg till modell av laddare" />
+    <text name="CreateNewAdminStatuses" value="Lägg till statuskod" />
+    <text name="CreateNewCapacity" value="Lägg till kapacitetsvärde" />
+    <text name="CreateNewMountType" value="Lägg till montagetyp"></text>
+    <text name="CreateNewMeterType" value="Lägg till mätartyp"></text>
+    <text name="AddSegment" value="Lägg till segment"></text>
+    <text name="FilterByCountryName" value="filtrera på land"></text>
+    <text name="FilterByInstallName" value="filtrera på installation"></text>
+    <text name="FilterByComment" value="filter på kommentar"></text>
+    <text name="Regions" value="Regioner"></text>
+    <text name="ChargepointModelImages" value="Bilder"></text>
+    <text name="IsActive" value="Aktiv"></text>
+    <text name="ErrorCodes" value="Felkoder"></text>
+    <text name="Installs" value="Installationer"></text>
+    <text name="Install" value="Installation"></text>
+    <text name="Groups" value="Grupper"></text>
+    <text name="ChargeReleaseOptions" value="Startmetoder"></text>
+    <text name="ComOptions" value="Kommunikation"></text>
+    <text name="ElectricOptions" value="El"></text>
+    <text name="Electric" value="El"></text>
+    <text name="Other" value="Övriga"></text>
+    <text name="Segments" value="Segment"></text>
+    <text name="Vendors" value="Tillverkare"></text>
+    <text name="ChargepointModels" value="Laddare, modeller"></text>
+    <text name="Configs" value="Konfigurationer"></text>
+    <text name="Status" value="Status"></text>
+    <text name="Capacities" value="Kapaciteter"></text>
+    <text name="MountTypes" value="Montage"></text>
+    <text name="Mounts" value="Montage"></text>
+    <text name="Segment" value="Segment"></text>
+    <text name="SegmentName" value="Segment"></text>
+    <text name="RegionName" value="Region"></text>
+    <text name="GroupName" value="Grupp"></text>
+    <text name="InstallName" value="Installation"></text>
+    <text name="CreateCountry" value="Lägg till land"></text>
+    <text name="CreateClient" value="Lägg till kund"></text>
+    <text name="CreateRegion" value="Lägg till region"></text>
+    <text name="CreateChargepointModelImage" value="Lägg till bilder"></text>
+    <text name="CreateErrorCode" value="Lägg till felkod"></text>
+    <text name="CreateInstall" value="Lägg till installation"></text>
+    <text name="CreateGroup" value="Lägg till grupp"></text>
+    <text name="CreateChargeReleaseOption" value="Lägg till startmetod"></text>
+    <text name="CreateComOption" value="Lägg till kommunikationstyp"></text>
+    <text name="CreateElectricalOption" value="Lägg till egenskap för el"></text>
+    <text name="CreateOtherOption" value="Lägg till övrig egenskap"></text>
+    <text name="Option" value="Egenskap"></text>
+    <text name="Comment" value="Kommentar" ></text>
+    <text name="CreateSegment" value="Lägg till segment"></text>
+    <text name="CreateVendor" value="Lägg till tillverkare"></text>
+    <text name="CreateChargepointModel" value="Lägg till modell"></text>
+    <text name="CreateAdminStatus" value="Lägg till statuskod"></text>
+    <text name="CreateMeterType" value="Lägg till mätartyp"></text>
+    <text name="MeterType" value="Mätartyp"></text>
+    <text name="MeterTypes" value="Mätartyper"></text>
+    <text name="Meters" value="Mätare"></text>
+    <text name="CreateCapacity" value="Lägg till kapacitetsvärde"></text>
+    <text name="CapacityKW" value="Kapacitet (kW)"></text>
+    <text name="CreateMountType" value="Lägg till montage"></text>
+    <text name="SelectVendorErrorCode" value="Välj tillverkare för felkoden"></text>
+    <text name="Country" value="Land"></text>
+    <text name="ChargePointModel" value="Laddmodell"></text>
+    <text name="Latitude" value="Latitud"></text>
+    <text name="Longitude" value="Longitud"></text>
+    <text name="Region" value="Region"></text>
+    <text name="ChargePoints" value="Laddpunkter"></text>
+    <text name="Models" value="Modeller"></text>
+    <text name="Options" value="Egenskaper"></text>
+    <text name="Releases" value="Startmetoder"></text>
+    <text name="Release" value="Startmetod"></text>
+    <text name="Communication" value="Kommunikation"></text>
+    <text name="Vendor" value="Tillverkare"></text>
+    <text name="Mount" value="Montage"></text>
+    <text name="Code" value="Kod"></text>
+    <text name="Text" value="Text"></text>
+    <text name="Electrical" value="El"></text>
+    <text name="OCPP" value="OCPP"></text>
+    <text name="TagManagement" value="Taggar"></text>
+    <text name="ParentTags" value="Parent tags"></text>
+    <text name="UserTags" value="Användartaggar"></text>
+    <text name="CreateParentTag" value="Lägg till Parent tag"></text>
+    <text name="ParentTagsHeaderInfo" value="En 'Parent Tag' används för att gruppera flera användartaggar"></text>
+    <text name="ParentTagValue" value="Värde"></text>
+    <text name="ElectricVehicles" value="Elbilar"></text>
+    <text name="Travel" value="Resor"></text>
+    <text name="Facts" value="Fakta"></text>
+    <text name="Blog" value="Blog"></text>
+    <text name="Values" value="Värden"></text>
+    <text name="Value" value="Värde"></text>
+    <text name="Faq" value="FAQ"></text>
+    <text name="ChargePointPage" value="Laddpunkter"></text>
+    <text name="Company" value="Företaget"></text>
+    <text name="Contact" value="Kontakt"></text>
+    <text name="Map" value="Karta"></text>
+    <text name="Surname" value="Efternamn" />
+    <text name="EmailAddress" value="Email" />
+    <text name="Definitions" value="Definitioner"></text>
+    <text name="Solar" value="Solpaneler"></text>
+    <text name="Wind" value="Vindkraft"></text>
+    <text name="Storage" value="Lagring"></text>
+    <text name="Grid" value="Grid"></text>
+    <text name="OperationOverview" value="Översikt"></text>
+    <text name="Operation" value="Drift"></text>
+    <text name="Transactions" value="Transaktioner"></text>
+    <text name="Reservations" value="Reservationer"></text>
+    <text name="OCPPMessages" value="OCPP-Meddelanden"></text>
+    <text name="Charger" value="Laddpunkt"></text>
+    <text name="Connectors" value="Uttag"></text>
+    <text name="Connector" value="Uttag"></text>
+    <text name="CreatingNewVendor" value="Skapa Tillverkare"></text>
+    <text name="EditingVendor" value="Ändra Tillverkare"></text>
+    <text name="DeletingVendor" value="Ta bort Tillverkare"></text>
+    <text name="CreatingNewErrorCode" value="Skapa Felkod"></text>
+    <text name="EditingErrorCode" value="Ändra Felkod"></text>
+    <text name="DeletingErrorCode" value="Ta bort Felkod"></text>
+    <text name="CreatingNewMount" value="Skapa Montagetyp"></text>
+    <text name="EditingMount" value="Ändra Montagetyp"></text>
+    <text name="DeletingMount" value="Ta bort Montagetyp"></text>
+    <text name="CreatingNewRelease" value="Spapa Startmetod"></text>
+    <text name="EditingRelease" value="Ändra Startmetod"></text>
+    <text name="DeletingRelease" value="Ta bort Startmetod"></text>
+    <text name="Communications" value="Kommunikationstyper"></text>
+    <text name="CreatingNewCommunication" value="Skapa Kommunikationstyp"></text>
+    <text name="EditingCommunication" value="Ändra Kommunikationstyp"></text>
+    <text name="DeletingCommunication" value="Ta bort Kommunikationstyp"></text>
+    <text name="Electrics" value="El-egenskaper"></text>
+    <text name="CreatingNewElectric" value="Skapa El-egenskaper"></text>
+    <text name="EditingElectric" value="Ändra El-egenskaper"></text>
+    <text name="DeletingElectric" value="Ta bort El-egenskaper"></text>
+    <text name="CreatingNewMeter" value="Skapa Mätare"></text>
+    <text name="EditingMeter" value="Ändra Mätare"></text>
+    <text name="DeletingMeter" value="Ta bort Mätare"></text>
+    <text name="CreatingNewOther" value="Skapa Övrig Egenskap"></text>
+    <text name="EditingOther" value="Ändra Övrig Egenskap"></text>
+    <text name="DeletingOther" value="Ta bort Övrig Egenskap"></text>
+    <text name="Images" value="Bilder"></text>
+    <text name="CreatingNewImage" value="Lägg till Bilder"></text>
+    <text name="DeletingImage" value="Ta bort Bilder"></text>
+    <text name="CreatingNewCapacity" value="Skapa Kapaciteter"></text>
+    <text name="EditingCapacity" value="Ändra Kapaciteter"></text>
+    <text name="DeletingCapacity" value="Ta bort Kapaciteter"></text>
+    <text name="AdminStatuses" value="Statuskoder"></text>
+    <text name="CreatingNewAdminStatus" value="Skapa Statuskoder"></text>
+    <text name="EditingAdminStatus" value="Ändra Statuskoder"></text>
+    <text name="DeletingAdminStatus" value="Ta bort Statuskoder"></text>
+    <text name="EditingOCPP" value="Ändra OCPP-Konfiguration"></text>
+    <text name="CreatingNewChargePoint" value="Skapa Modeller"></text>
+    <text name="EditingChargePoint" value="Ändra Modeller"></text>
+    <text name="DeletingChargePoint" value="Ta bort Modeller"></text>
+    <text name="CreatingNewSegment" value="Skapa Segment"></text>
+    <text name="EditingSegment" value="Ändra Segment"></text>
+    <text name="DeletingSegments" value="Ta bort Segment"></text>
+    <text name="Clients" value="Kunder"></text>
+    <text name="CreatingNewClient" value="Skapa Slutkunder"></text>
+    <text name="EditingClient" value="Ändra Slutkunder"></text>
+    <text name="DeletingClient" value="Ta bort Slutkunder"></text>
+    <text name="CreatingNewCountry" value="Skapa Länder"></text>
+    <text name="EditingCountry" value="Ändra Länder"></text>
+    <text name="DeletingCountry" value="Ta bort Länder"></text>
+    <text name="CreatingNewRegion" value="Skapa Regioner"></text>
+    <text name="EditingRegion" value="Ändra Regioner"></text>
+    <text name="DeletingRegion" value="Ta bort Regioner"></text>
+    <text name="CreatingNewInstall" value="Skapa Installationer"></text>
+    <text name="EditingInstall" value="Ändra Installationer"></text>
+    <text name="DeletingInstall" value="Ta bort Installationer"></text>
+    <text name="CreatingNewGroup" value="Skapa Grupper"></text>
+    <text name="EditingGroup" value="Ändra Grupper"></text>
+    <text name="DeletingGroup" value="Ta bort Grupper"></text>
+    <text name="Chargers" value="Laddpunkter"></text>
+    <text name="CreatingNewCharger" value="Skapa Laddpunkter"></text>
+    <text name="EditingCharger" value="Ändra Laddpunkter"></text>
+    <text name="DeletingCharger" value="Ta bort Laddpunkter"></text>
+    <text name="CreatingNewConnector" value="Skapa Uttag"></text>
+    <text name="EditingConnector" value="Ändra Uttag"></text>
+    <text name="DeletingConnector" value="Ta bort Uttag"></text>
+    <text name="Tags" value="Taggar"></text>
+    <text name="CreatingNewParentTag" value="Skapa Parent Tags"></text>
+    <text name="EditingParentTag" value="Ändra Parent Tags"></text>
+    <text name="DeletingParentTag" value="Ta bort Parent Tags"></text>
+    <text name="CreatingNewUserTag" value="Skapa Användartaggar"></text>
+    <text name="EditingUserTag" value="Ändra Användartaggar"></text>
+    <text name="DeletingUserTag" value="Ta bort Användartaggar"></text>
+    <text name="ViewOperation" value="Drift"></text>
+    <text name="ViewOperationsOverview" value="Översikt"></text>
+    <text name="ViewTransactions" value="Transaktioner"></text>
+    <text name="ViewReservations" value="Reservationer"></text>
+    <text name="ViewOCPPMessages" value="OCPP-Meddelanden"></text>
+    
+    <text name="ModelChargepoints" value="Modeller"></text>
+    <text name="ModelConnectors" value="Uttag"></text>
+    <text name="ModelOCPPConfigs" value="OCPP-Konfiguration"></text>
+    <text name="Box" value="Laddare"></text>
+    <text name="BoxConnectors" value="Uttag"></text>
+    <text name="BoxOCPPConfigs" value="OCPP-Konfiguration"></text>
+    <text name="Boxes" value="Laddare"></text>
+    <text name="CreatingNewBox" value="Skapa ny Laddare"></text>
+    <text name="EditingBox" value="Ändra Laddare"></text>
+    <text name="DeletingBox" value="Ta bort Laddare"></text>
+
+    <text name="BoxesConnectors" value="Uttag i Laddare"></text>
+    <text name="CreatingNewBoxesConnector" value="Skapa Uttag"></text>
+    <text name="EditingBoxesConnector" value="Ändra Uttag"></text>
+    <text name="DeletingBoxesConnector" value="Ta bort Uttag"></text>
+    <text name="BoxesOCPPConfig" value="OCPP-Konfiguration"></text>
+    <text name="EditingNewBoxesOCPPConfig" value="Ändra OCPP-Konfiguration"></text>
+
+    <text name="ChargersConnectors" value="Uttag"></text>
+    <text name="CreatingNewChargersConnectors" value="Skapa Uttag"></text>
+    <text name="EditingChargersConnectors" value="Ändra Uttag"></text>
+    <text name="DeletingChargersConnectors" value="Ta bort Uttag"></text>
+    <text name="ChargersOCPPConfigs" value="OCPP-Konfiguration"></text>
+    <text name="EditingChargersOCPPConfigs" value="Ändra OCPP-Konfiguration"></text>
+
+    <text name="NoOfConnectors" value="Antal Uttag"></text>
+    <text name="SelectModelVendor" value="Tillverkare"></text>
+
+    <text name="SelectReleases" value="Välj startmetoder"></text>
+    <text name="SelectCommunication" value="Välj komminikationsmetoder"></text>
+    <text name="SelectElectrical" value="Välj elektriska egenskaper"></text>
+    <text name="SelectOther" value="Välj övriga egenskaper"></text>
+
+    <text name="ModelKeyValues" value="OCPP-konfiguration för modeller"></text>
+    <text name="ModelKeyValuesHeaderInfo" value="Justera OCPP-Värden för modeller"></text>
+    
+    <text name="SelectVendor" value="--Välj Tillverkare--"></text>
+    <text name="SelectModel" value="--Välj Modell--"></text>
+    <text name="SelectConnector" value="--Välj Uttag--"></text>
+    <text name="DropdownDefault">--Välj--</text>
+    <text name="SelectUnit">--Välj enhet--</text>
+    <text name="SelectOCPPVersion">--Välj Version--</text>
+    <text name="SelectFeature">--Välj OCPP-Feature--</text>
+    <text name="SelectPower">--Välj AC/DC--</text>
+    
+    
+    
+    
+
+  </texts>
+</localizationDictionary>

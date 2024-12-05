@@ -1,0 +1,83 @@
+@using Sixoclock.Onyx.Web.Areas.App.Models.Common.Modals
+
+@using Sixoclock.Onyx.Web.Areas.App.Models.Configs
+@model CreateOrEditConfigViewModel
+
+@Html.Partial("~/Areas/App/Views/Common/Modals/_ModalHeader.cshtml", new ModalHeaderViewModel(L("CreateConfig")))
+
+<div class="modal-body">
+    <form role="form" novalidate class="form-validation">
+        <div class="form-group form-md-line-input form-md-floating-label no-hint">
+            <input type="hidden" name="Id" value="@Model.Config.Id" />
+            <input type="hidden" name="TenantId" value="@Model.Config.TenantId" />
+            <input type="hidden" name="Comment" value="@Model.Config.Comment" />
+            <input type="hidden" name="DefaultValue" value="@Model.Config.DefaultValue" />
+            <input type="hidden" name="OCPPFeatureId" value="@Model.Config.OCPPFeatureId" />
+            <input type="hidden" name="Key" value="@Model.Config.Key" />
+            <input type="hidden" name="RW" value="@Model.Config.RW" />
+            <div class="form-group">
+                <label class="form-md-floating-label">@Model.Config.Comment</label>
+            </div>
+        </div>
+        <div class="form-group form-md-line-input form-md-floating-label no-hint">
+            <div class="form-group">
+                <label class="form-md-floating-label">Config Key : @Model.Config.Key OCPP Version : @Model.Config.VersionName Feature : @Model.Config.FeatureName</label>
+            </div>
+        </div>
+
+        @{int number; }
+        @if (Model.Config.DefaultValue.ToLower() == "true" || Model.Config.DefaultValue.ToLower() == "false")
+        {
+            <div class="form-group form-md-line-input form-md-floating-label no-hint">
+                <div class="form-group">
+                    <label class="form-md-floating-label">Value </label>&nbsp;
+                    @if (Model.Config.DefaultValue.ToLower() == "true")
+                    {
+                        <label><input id="Value" name="Value" type="radio" value="@Model.Config.DefaultValue" onchange="setDefaultValueTrue()" checked="checked" /> True</label>
+                        <label><input id="Value" name="Value" type="radio" value="@Model.Config.DefaultValue" onchange="setDefaultValueFalse()" /> False</label>
+                    }
+                    else
+                    {
+                        <label><input id="Value" name="Value" type="radio" value="@Model.Config.DefaultValue" onchange="setDefaultValueTrue()" /> True</label>
+                        <label><input id="Value" name="Value" type="radio" value="@Model.Config.DefaultValue" onchange="setDefaultValueFalse()" checked="checked" /> False</label>
+                    }
+                </div>
+            </div>
+            <div class="form-group form-md-line-input form-md-floating-label no-hint">
+                <div class="form-group">
+                    <lable class="form-md-floating-label">Default : @Model.Config.DefaultValue</lable>
+                </div>
+            </div>
+        }
+        else if (int.TryParse(Model.Config.DefaultValue, out number))
+        {
+            <div class="form-group form-md-line-input form-md-floating-label no-hint">
+                <div class="form-group">
+                    <label class="form-md-floating-label">Value : </label>
+                    <input type="number" id="DefaultValue" name="DefaultValue" value="@Model.Config.DefaultValue" />
+                </div>
+            </div>
+            <div class="form-group form-md-line-input form-md-floating-label no-hint">
+                <div class="form-group">
+                    <lable class="form-md-floating-label">Default : @Model.Config.DefaultValue</lable>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="form-group form-md-line-input form-md-floating-label no-hint">
+                <div class="form-group">
+                    <label class="form-md-floating-label">Value : </label>
+                    <input type="text" id="DefaultValue" name="DefaultValue" value="@Model.Config.DefaultValue" />
+                </div>
+            </div>
+            <div class="form-group form-md-line-input form-md-floating-label no-hint">
+                <div class="form-group">
+                    <lable class="form-md-floating-label">Default : @Model.Config.DefaultValue</lable>
+                </div>
+            </div>
+        }
+    </form>
+</div>
+
+@Html.Partial("~/Areas/App/Views/Common/Modals/_ModalFooterWithSaveAndCancel.cshtml")

@@ -1,0 +1,81 @@
+﻿@using System.Threading.Tasks
+@using Abp.Application.Services.Dto
+@using Sixoclock.Onyx.Authorization
+@using Sixoclock.Onyx.Web.Areas.App.Startup
+@using Sixoclock.Onyx.Web.Startup
+@{
+    ViewBag.CurrentPageName = AppPageNames.Common.Grants;
+}
+@section Styles
+    {
+    <environment names="Development">
+        <link rel="stylesheet" href="~/view-resources/Areas/App/Views/Grants/Index.css" asp-append-version="true" />
+    </environment>
+
+    <environment names="Staging,Production">
+        <link rel="stylesheet" href="~/view-resources/Areas/App/Views/Grants/Index.min.css" asp-append-version="true" />
+    </environment>
+}
+@section Scripts
+    {
+    <environment names="Development">
+        <script src="~/view-resources/Areas/App/Views/Grants/_CreateOrEditModal.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/GrantRules/_CreateOrEditModal.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/Grants/Index.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/GrantRules/Index.js" asp-append-version="true"></script>
+    </environment>
+    <environment names="Staging,Production">
+        <script src="~/view-resources/Areas/App/Views/Grants/_CreateOrEditModal.min.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/GrantRules/_CreateOrEditModal.min.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/Grants/Index.min.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Areas/App/Views/GrantRules/Rules/Index.min.js" asp-append-version="true"></script>
+    </environment>
+}
+<div class="row margin-bottom-5">
+    <div class="col-xs-6">
+        <div class="page-head">
+            <div class="page-title">
+                <h1>
+                    <span>@L("Grants")</span> <small>@L("GrantsHeaderInfo")</small>
+                </h1>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-6 text-right">
+        @if (IsGranted(AppPermissions.Pages_Grants_Create))
+        {
+            <button id="CreateNewGrantButton" class="btn btn-primary blue"><i class="fa fa-plus"></i> @L("Create_NewRuleSet")</button>
+        }
+    </div>
+</div>
+
+<div class="portlet light margin-bottom-0">
+    <div class="portlet-title portlet-title-filter">
+        <div class="inputs inputs-full-width">
+            <div class="portlet-input">
+                <form>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <div class="form-group">
+                                <button id="RefreshGrantsButton" class="btn btn-primary blue"><i class="fa fa-refresh"></i> @L("Refresh")</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="portlet-body">
+        <table id="GrantsTable" class="display table table-striped table-bordered table-hover dt-responsive nowrap">
+            <thead>
+                <tr>
+                    <th>@L("Actions")</th>
+                    <th>@L("RuleName")</th>
+                    <th>@L("RuleTranslation")</th>
+                    <th>@L("RuleCount")</th>
+                    
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,47 @@
+﻿@using System.Threading.Tasks
+@using Sixoclock.Onyx.Authorization
+@using Sixoclock.Onyx.Web.Areas.App.Startup
+@using Sixoclock.Onyx.Web.Startup
+
+@{
+    ViewBag.CurrentPageName = AppPageNames.Common.KeyCards;
+}
+
+@section Scripts
+{
+    <environment names="Development">
+        <script src="~/view-resources/Areas/App/Views/KeyCards/Index.js" asp-append-version="true"></script>
+    </environment>
+    <environment names="Staging,Production">
+        <script src="~/view-resources/Areas/App/Views/KeyCards/Index.min.js" asp-append-version="true"></script>
+    </environment>
+}
+
+<div class="row margin-bottom-5">
+    <div class="col-xs-6">
+        <div class="page-head">
+            <div class="page-title">
+                <h1>
+                    <span>@L("MyKeys")</span>
+                </h1>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="portlet light margin-bottom-0">
+    <div class="portlet-body">
+        <table id="KeyCardsTable" class="display table table-striped table-bordered table-hover dt-responsive nowrap">
+            <thead>
+                <tr>
+                    <th>@L("Actions")</th>
+                    <th>@L("Id")</th>
+                    <th>@L("Status")</th>
+                    <th>@L("KwhCharged")</th>
+                    <th>@L("Transactions")</th>
+                    <th>@L("Expires")</th>
+                    <th>@L("LastUsed")</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>

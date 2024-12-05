@@ -1,0 +1,160 @@
+﻿@using Abp.Extensions
+@using Sixoclock.Onyx.Web.Areas.App.Models.Common.Modals
+@using Sixoclock.Onyx.Web.Areas.App.Models.Grants
+@model Sixoclock.Onyx.Web.Areas.App.Models.Grants.CreateOrEditGrantRuleModelViewModel
+
+@Html.Partial("~/Areas/App/Views/Common/Modals/_ModalHeader.cshtml", new ModalHeaderViewModel(Model.IsEditMode ? (L("EditRule")  + ":" + Model.Rule.EntityName) : L("CreateNewRule")))
+
+<style type="text/css">
+    td, th {
+        padding: 0 10px 0 10px;
+    }
+</style>
+<div class="modal-body">
+    <div>
+        <div>
+            <form name="RuleForm" role="form" novalidate class="form-validation">
+
+                @if (Model.IsEditMode)
+                {
+                    <input type="hidden" name="Id" value="@Model.Rule.Id" />
+                }
+
+                <input type="hidden" name="RuleSetId" value="@Model.Rule.RuleSetId"/>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th width="70">
+                                <label class="form-md-floating-label">@L("RelationStart")</label>
+                            </th>
+                            <th width="200">
+                                <label class="form-md-floating-label">@L("EntityName")</label>
+                            </th>
+                            <th width="200">
+                                <label class="form-md-floating-label">@L("PropertyName")</label>
+                            </th>
+                            <th width="50">
+                                <label class="form-md-floating-label">@L("RuleCondition")</label>
+                            </th>
+                            <th width="150">
+                                <label class="form-md-floating-label">@L("Value")</label>
+                            </th>
+                            <th width="90">
+                                <label class="form-md-floating-label">@L("RelationEnd")</label>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <select class="form-control" id="RuleStartRelationId" name="RuleStartRelationId">
+                                    @foreach (var rule in Model.RuleStartRelations)
+                                    {
+                                        <option value="@rule.Value" selected="@(Model.Rule.RuleStartRelationId != null && Convert.ToString(value: Model.Rule.RuleStartRelationId) == rule.Value)">@rule.DisplayText</option>
+                                    }
+                                </select>
+                            </td>
+                            <td>
+                                <select class="form-control" id="EntityName" name="EntityName">
+                                    @foreach (var entity in Model.Entities)
+                                    {
+                                        <option value="@entity.Value" selected="@(Model.Rule != null && !string.IsNullOrEmpty(Model.Rule.EntityName) && Model.Rule.EntityName.ToString() == entity.Value)">@entity.DisplayText</option>
+                                    }
+                                </select>
+                            </td>
+                            <td>
+                                <select class="form-control" id="PropertyName" name="PropertyName">
+                                    @foreach (var property in Model.Properties.Where(x=>x.Value==(!string.IsNullOrEmpty(Model.Rule.EntityName)?Model.Rule.EntityName:Model.Entities.FirstOrDefault()?.Value)))
+                                    {
+                                        <option value="@property.DisplayText" type="@property.Type" selected="@(Model.Rule != null && Convert.ToString(Model.Rule.PropertyName) == @property.DisplayText)">@property.DisplayText</option>
+                                    }
+                                </select>
+                            </td>
+                            <td>
+                                <select class="form-control" id="RuleConditionId" name="RuleConditionId">
+                                    @foreach (var oper in Model.RuleOperators)
+                                    {
+                                        <option value="@oper.Value" selected="@(Model.Rule != null &&  Model.Rule.RuleConditionId.ToString() == @oper.Value)">@oper.DisplayText</option>
+                                    }
+                                </select>
+                            </td>
+                            <td>
+                                <input class="form-control" type="text" name="Value" id="Value" value="@Model.Rule.Value" required>
+                            </td>
+                            <td>
+                                <select class="form-control" id="RuleEndRelationId" name="RuleEndRelationId">
+                                    @foreach (var rule in Model.RuleEndRelations)
+                                    {
+                                        <option value="@rule.Value" selected="@(Model.Rule != null && Convert.ToString(Model.Rule.RuleEndRelationId) == @rule.Value)">@rule.DisplayText</option>
+                                    }
+                                </select>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                @*<div class="form-group form-md-line-input form-md-floating-label no-hint">
+                    <label class="form-md-floating-label">@L("ConditonStart")</label>
+                    <select class="form-group" id="RuleStartRelationId" name="RuleStartRelationId">
+                        @foreach (var rule in Model.RuleStartRelations)
+                        {
+                            <option value="@rule.Value" selected="@(Model.Rule.RuleStartRelationId != null && Convert.ToString(value: Model.Rule.RuleStartRelationId) == rule.Value)">@rule.DisplayText</option>
+                        }
+                    </select>
+                </div>
+                
+                <div class="form-group form-md-line-input form-md-floating-label no-hint">
+                    <label class="form-md-floating-label">@L("EntityName")</label>
+                    <select class="form-group" id="EntityName" name="EntityName">
+                        @foreach (var entity in Model.Entities)
+                        {
+                            <option value="@entity.Value" selected="@(Model.Rule != null && !string.IsNullOrEmpty(Model.Rule.EntityName) && Model.Rule.EntityName.ToString() == entity.Value)">@entity.DisplayText</option>
+                        }
+                    </select>
+                </div>
+                
+                <div class="form-group form-md-line-input form-md-floating-label no-hint">
+                    <label class="form-md-floating-label">@L("PropertyName")</label>
+                    <select class="form-group" id="PropertyName" name="PropertyName">
+                        @foreach (var property in Model.Properties)
+                        {
+                            <option value="@property.DisplayText" selected="@(Model.Rule != null && Convert.ToString(Model.Rule.PropertyName) == @property.DisplayText)">@property.DisplayText</option>
+                        }
+                    </select>
+                </div>
+                
+                <div class="form-group form-md-line-input form-md-floating-label no-hint">
+                    <label class="form-md-floating-label">@L("RuleCondition")</label>
+                    <select class="form-group" id="RuleConditionId" name="RuleConditionId">
+                        @foreach (var oper in Model.RuleOperators)
+                        {
+                            <option value="@oper.Value" selected="@(Model.Rule != null &&  Model.Rule.RuleConditionId.ToString() == @oper.Value)">@oper.DisplayText</option>
+                        }
+                    </select>
+                </div>
+                
+                <div class="form-group form-md-line-input form-md-floating-label no-hint">
+                    <div class="form-group">
+                        <label class="form-md-floating-label">@L("Value")</label>
+                        <input class="form-control" type="text" name="Value" value="@Model.Rule.Value" required>
+                    </div>
+                </div>
+
+                <div class="form-group form-md-line-input form-md-floating-label no-hint">
+                    <label class="form-md-floating-label">@L("ConditionEnd")</label>
+                    <select class="form-group" id="RuleEndRelationId" name="RuleEndRelationId">
+                        @foreach (var rule in Model.RuleEndRelations)
+                        {
+                            <option value="@rule.Value" selected="@(Model.Rule != null && Convert.ToString(Model.Rule.RuleEndRelationId) == @rule.Value)">@rule.DisplayText</option>
+                        }
+                    </select>
+                </div>*@
+            </form>
+
+        </div>
+    </div>
+
+</div>
+
+@Html.Partial("~/Areas/App/Views/Common/Modals/_ModalFooterWithSaveAndCancel.cshtml")

@@ -1,0 +1,65 @@
+﻿@using Abp.Extensions
+@using Sixoclock.Onyx.Web.Areas.App.Models.Common.Modals
+@using Sixoclock.Onyx.Web.Areas.App.Models.Services
+@model Sixoclock.Onyx.Web.Areas.App.Models.Services.CreateOrEditServicesPriceParameterModalViewModel
+
+@Html.Partial("~/Areas/App/Views/Common/Modals/_ModalHeader.cshtml", new ModalHeaderViewModel(Model.IsEditMode ? (L("EditPriceParameter") + ":" + Model.PriceParameter.Name) : L("CreateNewPriceParameter")))
+
+<style type="text/css">
+    td, th {
+        padding: 0 10px 0 10px;
+    }
+</style>
+<div class="modal-body">
+    <div>
+        <div>
+            <form name="PriceParameterForm" role="form" novalidate class="form-validation">
+
+                @if (Model.IsEditMode)
+                {
+                    <input type="hidden" name="Id" value="@Model.PriceParameter.Id" />
+                }
+
+                <input type="hidden" name="ServiceId" value="@Model.PriceParameter.ServiceId" />
+
+                <table>
+                    <thead>
+                        <tr>
+                            
+                            <th width="200">
+                                <label class="form-md-floating-label">@L("Name")</label>
+                            </th>
+                           
+                            <th width="150">
+                                <label class="form-md-floating-label">@L("Value")</label>
+                            </th>
+                         
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                           
+                            <td>
+                                <select class="form-control" id="Name" name="Name">
+                                    @foreach (var entity in Model.PriceParametersNames)
+                                    {
+                                        <option value="@entity.Value" selected="@(Model.PriceParameter != null && !string.IsNullOrEmpty(Model.PriceParameter.Name) && Model.PriceParameter.Name.ToString() == entity.Value)">@entity.DisplayText</option>
+                                    }
+                                </select>
+                     
+                            <td>
+                                <input class="form-control" type="text" name="Value" id="Value" value="@Model.PriceParameter.Value" required>
+                            </td>
+                            
+                        </tr>
+                    </tbody>
+                </table>
+
+            </form>
+
+        </div>
+    </div>
+
+</div>
+
+@Html.Partial("~/Areas/App/Views/Common/Modals/_ModalFooterWithSaveAndCancel.cshtml")

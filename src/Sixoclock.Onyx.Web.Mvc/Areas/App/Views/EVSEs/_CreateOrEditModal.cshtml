@@ -1,0 +1,127 @@
+@using Sixoclock.Onyx.Web.Areas.App.Models.Common.Modals
+
+@using Sixoclock.Onyx.Web.Areas.App.Models.EVSEs
+@model CreateOrEditEVSEViewModel
+
+@Html.Partial("~/Areas/App/Views/Common/Modals/_ModalHeader.cshtml", new ModalHeaderViewModel(L("CreateEVSE")))
+
+<div class="modal-body">
+    <form role="form" novalidate class="form-validation">
+
+        <div class="form-group ">
+            <input type="hidden" name="Id" value="@Model.EVSE.Id" />
+            <input type="hidden" name="TenantId" value="@Model.EVSE.TenantId" />
+            <input type="hidden" name="AvailabilityTypeId" value="@Model.EVSE.AvailabilityTypeId" />
+
+            <div class="form-group">
+                <label>Select Vendor</label>
+                @if (Model.EVSE.Id == 0)
+                {
+                    <select class="form-control bs-select" required>
+                        <option value="0">@L("DropdownDefault")</option>
+                        @for (int i = 0; i < ViewBag.Vendors.Items.Count; i++)
+                        {
+                            <option value="@ViewBag.Vendors.Items[i].Id">@ViewBag.Vendors.Items[i].Name</option>
+                        }
+                    </select>
+                }
+                else
+                {
+                    <select class="form-control bs-select" required disabled>
+                        <option value="0">@L("DropdownDefault")</option>
+                        @for (int i = 0; i < ViewBag.Vendors.Items.Count; i++)
+                        {
+                            @if (Model.EVSE.VendorId == ViewBag.Vendors.Items[i].Id)
+                            {
+
+                                <option value="@ViewBag.Vendors.Items[i].Id" selected>@ViewBag.Vendors.Items[i].Name</option>
+                            }
+                            else
+                            {
+                                <option value="@ViewBag.Vendors.Items[i].Id">@ViewBag.Vendors.Items[i].Name</option>
+                            }
+
+                        }
+                    </select>
+
+                }
+            </div>
+        </div>
+
+        <div class="form-group">
+            
+            <div class="form-group">
+                <label>Select Chargepoint</label>
+                @if (Model.EVSE.Id == 0)
+                {
+                    <select name="ChargepointId" id="ChargepointId" class="form-control bs-select" required>
+                        <option value="0">@L("DropdownDefault")</option>
+                        @for (int i = 0; i < ViewBag.Chargepoints.Items.Count; i++)
+                        {
+                            <option value="@ViewBag.Chargepoints.Items[i].Id">@ViewBag.Chargepoints.Items[i].Name</option>
+                        }
+                    </select>
+                }
+                else
+                {
+                    <select name="ChargepointId" id="ChargepointId" class="form-control bs-select" required disabled>
+                        <option value="0">@L("DropdownDefault")</option>
+                        @for (int i = 0; i < ViewBag.Chargepoints?.Items.Count; i++)
+                        {
+                            @if (Model.EVSE.ChargepointId == ViewBag.Chargepoints.Items[i].Id)
+                            {
+
+                                <option value="@ViewBag.Chargepoints.Items[i].Id" selected>@ViewBag.Chargepoints.Items[i].Name</option>
+                            }
+                            else
+                            {
+                                <option value="@ViewBag.Chargepoints.Items[i].Id">@ViewBag.Chargepoints.Items[i].Name</option>
+                            }
+                        }
+                    </select>
+
+                }
+            </div>
+        </div>
+
+        <div class="form-group">
+
+            <div class="form-group">
+                <label>Select Meter</label>
+                <select name="MeterTypeId" id="MeterTypeId" class="form-control bs-select" required>
+                    <option value="0">@L("DropdownDefault")</option>
+                    @for (int i = 0; i < ViewBag.MeterTypes.Items.Count; i++)
+                    {
+                        @if (Model.EVSE.MeterTypeId == ViewBag.MeterTypes.Items[i].Id)
+                        {
+
+                            <option value="@ViewBag.MeterTypes.Items[i].Id" selected>@ViewBag.MeterTypes.Items[i].Name</option>
+                        }
+                        else
+                        {
+                            <option value="@ViewBag.MeterTypes.Items[i].Id">@ViewBag.MeterTypes.Items[i].Name</option>
+                        }
+                    }
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+
+            <div class="form-group">
+                <label>@L("Comment")</label>
+                <input class="form-control" type="text" name="Comment" value="@Model.EVSE.Comment">
+            </div>
+        </div>
+
+        <div class="form-group">
+
+            <div class="form-group">
+                <label>@L("EVSEId")</label>
+                <input class="form-control" type="text" name="EVSE_id" id="EVSE_id" value="@Model.EVSE.EVSE_id" required disabled>
+            </div>
+        </div>
+    </form>
+</div>
+
+@Html.Partial("~/Areas/App/Views/Common/Modals/_ModalFooterWithSaveAndCancel.cshtml")

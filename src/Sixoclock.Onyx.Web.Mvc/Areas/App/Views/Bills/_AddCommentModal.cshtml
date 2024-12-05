@@ -1,0 +1,26 @@
+﻿@using Abp.Extensions
+@using Sixoclock.Onyx.Web.Areas.App.Models.Common.Modals
+@model Sixoclock.Onyx.Web.Areas.App.Models.Bills.AddCommentModalViewModel
+
+@Html.Partial("~/Areas/App/Views/Common/Modals/_ModalHeader.cshtml", new ModalHeaderViewModel(L("Edit_RuleSet")))
+
+<div class="modal-body">
+    <div>
+        <div>
+            <form name="AddCommentForm" role="form" novalidate class="form-validation">
+
+                    <input type="hidden" name="Id" value="@Model.Bill.Id" />
+                <div class="form-group form-md-line-input form-md-floating-label no-hint">
+                    <div class="form-group">
+                        <label class="form-md-floating-label">@L("Comment")</label>
+                        <input class="form-control" type="text" name="Comment" value="@Model.Bill.Comment" required>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+</div>
+
+@Html.Partial("~/Areas/App/Views/Common/Modals/_ModalFooterWithSaveAndCancel.cshtml")

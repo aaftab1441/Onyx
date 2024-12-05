@@ -1,0 +1,28 @@
+@using Sixoclock.Onyx.Web.Areas.App.Models.Common.Modals
+
+@using Sixoclock.Onyx.Web.Areas.App.Models.Vendors
+@model CreateOrEditVendorViewModel
+
+@Html.Partial("~/Areas/App/Views/Common/Modals/_ModalHeader.cshtml", new ModalHeaderViewModel(L("CreateVendor")))
+
+<div class="modal-body">
+    <form role="form" novalidate class="form-validation">
+        <div class="form-group form-md-line-input form-md-floating-label no-hint">
+            <input type="hidden" name="Id" value="@Model.Vendor.Id" />
+            <input type="hidden" name="TenantId" value="@Model.Vendor.TenantId" />
+            <div class="form-group">
+                <label class="form-md-floating-label">@L("Name")</label>
+                <input class="form-control" type="text" name="Name" value="@Model.Vendor.Name" required>
+            </div>
+        </div>
+
+        <div class="form-group form-md-line-input form-md-floating-label no-hint">
+            <div class="form-group">
+                <label class="form-md-floating-label">@L("Comment")</label>
+                <input class="form-control" type="text" name="Comment" value="@Model.Vendor.Comment" required>
+            </div>
+        </div>
+    </form>
+</div>
+
+@Html.Partial("~/Areas/App/Views/Common/Modals/_ModalFooterWithSaveAndCancel.cshtml")

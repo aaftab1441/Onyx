@@ -1,0 +1,99 @@
+@using Sixoclock.Onyx.Web.Areas.App.Models.Common.Modals
+
+@using Sixoclock.Onyx.Web.Areas.App.Models.Connectors
+@model CreateOrEditConnectorViewModel
+
+@Html.Partial("~/Areas/App/Views/Common/Modals/_ModalHeader.cshtml", new ModalHeaderViewModel(L("EditBoxConnector")))
+
+<div class="modal-body">
+    <form role="form" novalidate class="form-validation form-horizontal">
+        <input type="hidden" name="Id" value="@Model.Connector.Id" />
+        <input type="hidden" name="TenantId" value="@Model.Connector.TenantId" />
+        <div class="form-group no-hint">
+            <label class="control-label col-sm-4" for="EVSEId">Select EVSE</label>
+            @if (Model.Connector.Id == 0)
+            {
+                <div class="col-sm-8">
+                    <select name="EVSEId" id="EVSEId" class="form-control bs-select" required>
+                        <option value="0">@L("DropdownDefault")</option>
+                        @for (int i = 0; i < ViewBag.EVSEs.Items.Count; i++)
+                        {
+                            <option value="@ViewBag.EVSEs.Items[i].Id">@ViewBag.EVSEs.Items[i].EVSE_id</option>
+                        }
+                    </select>
+                </div>
+
+            }
+            else
+            {
+                <div class="col-sm-8">
+                    <select name="EVSEId" id="EVSEId" class="form-control bs-select" required disabled>
+                        <option value="0">@L("DropdownDefault")</option>
+                        @for (int i = 0; i < ViewBag.EVSEs.Items.Count; i++)
+                        {
+                            @if (Model.Connector.EVSEId == ViewBag.EVSEs.Items[i].Id)
+                            {
+
+                                <option value="@ViewBag.EVSEs.Items[i].Id" selected>@ViewBag.EVSEs.Items[i].EVSE_id</option>
+                            }
+                            else
+                            {
+                                <option value="@ViewBag.EVSEs.Items[i].Id">@ViewBag.EVSEs.Items[i].EVSE_id</option>
+                            }
+                        }
+                    </select>
+                </div>
+
+            }
+        </div>
+
+        <div class="form-group no-hint">
+            <label class="control-label col-sm-4" for="ConnectorTypeId">Select connector type</label>
+            <div class="col-sm-8">
+                <select name="ConnectorTypeId" id="ConnectorTypeId" class="form-control bs-select" required>
+                    <option value="0">@L("DropdownDefault")</option>
+                    @for (int i = 0; i < ViewBag.ConnectorTypes.Items.Count; i++)
+                    {
+                        @if (Model.Connector.ConnectorTypeId == ViewBag.ConnectorTypes.Items[i].Id)
+                        {
+
+                            <option value="@ViewBag.ConnectorTypes.Items[i].Id" selected>@ViewBag.ConnectorTypes.Items[i].Name</option>
+                        }
+                        else
+                        {
+                            <option value="@ViewBag.ConnectorTypes.Items[i].Id">@ViewBag.ConnectorTypes.Items[i].Name</option>
+                        }
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="form-group no-hint">
+            <label class="control-label col-sm-4" for="CapacityId">Select capacity</label>
+            <div class="col-sm-8">
+                <select name="CapacityId" id="CapacityId" class="form-control bs-select" required>
+                    <option value="0">@L("DropdownDefault")</option>
+                    @for (int i = 0; i < ViewBag.Capacities.Items.Count; i++)
+                    {
+                        @if (Model.Connector.CapacityId == ViewBag.Capacities.Items[i].Id)
+                        {
+
+                            <option value="@ViewBag.Capacities.Items[i].Id" selected>@ViewBag.Capacities.Items[i].Name</option>
+                        }
+                        else
+                        {
+                            <option value="@ViewBag.Capacities.Items[i].Id">@ViewBag.Capacities.Items[i].Name</option>
+                        }
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="form-group no-hint">
+            <label class="control-label col-sm-4" for="Comment">Comment</label>
+            <div class="col-sm-8">
+                <input class="form-control" type="text" name="Comment" id="Comment" value="@Model.Connector.Comment">
+            </div>
+        </div>
+    </form>
+</div>
+
+@Html.Partial("~/Areas/App/Views/Common/Modals/_ModalFooterWithSaveAndCancel.cshtml")
