@@ -1,7 +1,3 @@
-Here's a detailed README file for your project based on the provided information and discussions:  
-
----
-
 # ASP.NET Zero Boilerplate Admin Backend with Metronic Framework  
 
 This project is a backend application developed using the **ASP.NET Zero Boilerplate** framework, extended with the **Metronic Framework**, and customized for business logic integration. The application includes an extensive **JSON API** to enable communication with external devices, particularly for managing and monitoring charging points for electric vehicles, using the **OCPP protocol**.  
